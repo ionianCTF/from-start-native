@@ -9,20 +9,13 @@ if (ScreenHeight < ScreenWidth) {
 
 export default StyleSheet.create({
   container: {
-	maxHeight: ScreenHeight,
+    maxHeight: ScreenHeight,
     fontFamily: 'Roboto',
     flex: 1,
     height: ScreenHeight,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF'
-  },
-  
-  welcomeTitle: {
-    fontWeight: 'bold',
-    fontSize: '2.5rem',
-    marginVertical: '1em',
-    textAlign: 'center'
   },
 
   text: {
@@ -32,8 +25,8 @@ export default StyleSheet.create({
   },
 
   link: {
-	fontSize: '1em',
-	marginVertical: '0.8em',
+    fontSize: '1em',
+    marginVertical: '0.8em',
     color: '#1B95E0'
   },
 
@@ -41,9 +34,28 @@ export default StyleSheet.create({
     minWidth: '12em',
     minHeight: '12em',
   },
+  
+  welcomeTitle: {
+    fontWeight: 'bold',
+    fontSize: '2.5rem',
+    marginVertical: '1em',
+    textAlign: 'center'
+  },
+
+  signupLogo: {
+    minWidth: '4em',
+    minHeight: '4em',
+  },
+
+  signupTitle: {
+    fontWeight: 'bold',
+    fontSize: '.5rem',
+    marginVertical: '0.3em',
+    textAlign: 'center'
+  },
 
   menuPressable: {
-	fontWeight: 'bold',
+    fontWeight: 'bold',
     color: 'black',
     backgroundColor: '#fc5a03',
     minWidth: ScreenWidth,
@@ -60,14 +72,11 @@ export default StyleSheet.create({
   },
 
   menuInput: {
-	textAlign: 'center',
-	minWidth: ScreenWidth,
-	borderRadius: '1em',
-	marginVertical: '0.5em',
-	fontSize: '1.5em',
-	paddingVertical: '0.7em',
-	backgroundColor
+    textAlign: 'center',
+    minWidth: ScreenWidth,
+    borderRadius: '1em',
+    marginVertical: '0.5em',
+    fontSize: '1.5em',
+    paddingVertical: '0.7em',
   },
-
-
 });

@@ -2,13 +2,14 @@ import React from 'react';
 import * as Font from 'expo-font';
 import Welcome from './src/welcome.component';
 import Login from './src/login.component';
+import Signup  from './src/signup.component';
 
 export default class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			fontsLoaded: false,
-			page: 'login'
+			page: 'signup'
 		}
 		this.setPage = this.setPage.bind(this);
 	}
@@ -42,6 +43,8 @@ export default class App extends React.Component {
 		toRender = <Welcome setPage={ this.setPage }/>
 	} else if (this.state.page === 'login') {
 		toRender = <Login setPage={ this.setPage } />
+	} else if (this.state.page === 'signup') {
+		toRender = <Signup setPage={ this.setPage } />
 	}
 	return (
 		toRender	
