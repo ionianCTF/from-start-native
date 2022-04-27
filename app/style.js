@@ -1,6 +1,8 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import { useFonts } from 'expo-font';
 
 let ScreenHeight = Dimensions.get('window').height;
+
 export default StyleSheet.create({
   container: {
     flex: 1,
@@ -13,8 +15,9 @@ export default StyleSheet.create({
     padding: 20
   },
   welcomeTitle: {
+    fontFamily: 'Roboto',
     fontWeight: 'bold',
-    fontSize: '1.5rem',
+    fontSize: '2.5rem',
     marginVertical: '1em',
     textAlign: 'center'
   },
