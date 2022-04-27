@@ -21,14 +21,14 @@ export default class Login extends React.Component {
                     style={styles.menuInput} 
                     placeholder='Username'
                     value={this.state.username}
-                    onChangeText={input => this.setState({ username: input })}
+                    onChangeText={input => this.setState({username: input})}
                 >   
                 </TextInput>
                 <TextInput 
                     style={styles.menuInput} 
                     placeholder='Password'
                     value={this.state.password}
-                    onChangeText={input => this.setState({ password: input })}
+                    onChangeText={input => this.setState({password: input})}
                     secureTextEntry={true}
                 >   
                 </TextInput>
