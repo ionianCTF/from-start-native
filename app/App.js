@@ -1,12 +1,13 @@
 import React from 'react';
-import { Button, Text, View, Image} from 'react-native';
-import styles from './style';
 import * as Font from 'expo-font';
+import Welcome from './src/welcome.component';
+import Login from './src/login.component'
 
 export default class App extends React.Component {
   state = {
     fontsLoaded: false,
-  };
+	page: 'welcome'
+  }
 
   // Load fonts https://docs.expo.dev/versions/latest/sdk/font/
   async loadFonts() {
@@ -27,12 +28,13 @@ export default class App extends React.Component {
   render () {
 	// Warn user if font didn't load
 	if (!this.state.fontsLoaded) console.warn('Error, unable to load fonts');
+
+	var toRender;
+	if (this.state.page === 'welcome'){
+		toRender = <Welcome />
+	}
 	return (
-		<View style={styles.container}>
-			<Image style={styles.welcomeLogo} source={require('./assets/logo.png')}/>
-				<Text style={styles.welcomeTitle}>SpotFox</Text>
-			<Button onPress={() => { alert('welcome')}} title="Welcome" />
-		</View>
+		toRender	
 	);
   }
 }
