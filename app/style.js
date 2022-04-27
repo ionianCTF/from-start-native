@@ -4,11 +4,12 @@ import { useFonts } from 'expo-font';
 let ScreenHeight = Dimensions.get('window').height;
 let ScreenWidth = Dimensions.get('window').width;
 if (ScreenHeight < ScreenWidth) {
-    ScreenWidth = ScreenWidth/2
+    ScreenWidth = ScreenWidth/3
 }
 
 export default StyleSheet.create({
   container: {
+	maxHeight: ScreenHeight,
     fontFamily: 'Roboto',
     flex: 1,
     height: ScreenHeight,
@@ -31,27 +32,41 @@ export default StyleSheet.create({
   },
 
   link: {
+	fontSize: '1em',
+	marginVertical: '0.8em',
     color: '#1B95E0'
   },
 
   welcomeLogo: {
-      minWidth: '12em',
-      minHeight: '12em',
+    minWidth: '12em',
+    minHeight: '12em',
   },
 
   menuPressable: {
-      color: 'black',
-      backgroundColor: '#fc5a03',
-      minWidth: ScreenWidth,
-      borderRadius: '1em',
-      marginVertical: '1em'
+	fontWeight: 'bold',
+    color: 'black',
+    backgroundColor: '#fc5a03',
+    minWidth: ScreenWidth,
+    borderRadius: '1em',
+    marginVertical: '.5em'
   },
+
   textPressable: {
     lineHeight: '1.5em',
-    fontSize: '1.5rem',
+    fontSize: '1.3rem',
     fontStyle: 'bold',
     textAlign: 'center',
     marginVertical: '1em'
+  },
+
+  menuInput: {
+	textAlign: 'center',
+	minWidth: ScreenWidth,
+	borderRadius: '1em',
+	marginVertical: '0.5em',
+	fontSize: '1.5em',
+	paddingVertical: '0.7em',
+	backgroundColor
   },
 
 
