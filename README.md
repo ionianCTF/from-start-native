@@ -1,2 +1,2 @@
 # from-start-native
-Front end for Haki-Malai/from-start
+Back end repositoy can be found [here](https://github.com/Haki-Malai/from-start)
