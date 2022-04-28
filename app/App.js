@@ -9,14 +9,41 @@ export default class App extends React.Component {
 		super(props);
 		this.state = {
 			fontsLoaded: false,
-			page: 'signup'
+			page: 'welcome',
+			accessToken: ''
 		}
 		this.setPage = this.setPage.bind(this);
+		this.setToken = this.setToken.bind(this);
 	}
 
 	setPage(page) {
-		this.setState({ page: page });
+		this.setState({page: page});
 	} 
+
+	setToken(token) {
+		this.setState({accessToken: token});
+	} 
+
+	getPage() {
+		const requestOptions = {
+            method: 'GET',
+        }
+		fetch('http://localhost:8010/proxy/', requestOptions)
+			.then(response => response.json())
+            .then(data => {
+                if (data.render) {
+					console.log(data);
+                    this.setState({page: data.render});
+                } else {
+                    alert('Invalid username/password compination');
+                    console.log(data);
+                }
+            })
+            .catch(e => {
+				alert('Internal server error, please try again'); 
+				console.log(e);
+			});
+	}
 
     // Load fonts https://docs.expo.dev/versions/latest/sdk/font/
     async loadFonts() {
@@ -33,21 +60,25 @@ export default class App extends React.Component {
 
     componentDidMount() {
         this.loadFonts();
+		this.getPage();
+
     }
     render() {
-	// Warn user if font didn't load
-	if (!this.state.fontsLoaded) console.warn('Error, unable to load fonts');
+		// Warn user if font didn't load
+		if (!this.state.fontsLoaded) console.warn('Error, unable to load fonts');
 
-	var toRender;
-	if (this.state.page === 'welcome') {
-		toRender = <Welcome setPage={ this.setPage }/>
-	} else if (this.state.page === 'login') {
-		toRender = <Login setPage={ this.setPage } />
-	} else if (this.state.page === 'signup') {
-		toRender = <Signup setPage={ this.setPage } />
-	}
-	return (
-		toRender	
-	);
+		var toRender;
+		if (this.state.page === 'welcome') {
+			toRender = <Welcome setPage={this.setPage} setToken={this.setToken}/>
+		} else if (this.state.page === 'login') {
+			toRender = <Login setPage={this.setPage} setToken={this.setToken}/>
+		} else if (this.state.page === 'signup') {
+			toRender = <Signup setPage={this.setPage} setToken={this.setToken}/>
+		} else if (this.state.page === 'signup') {
+			toRender = <Welcome setPage={this.setPage} setToken={this.setToken}/>
+		}
+		return (
+			toRender	
+		);
     }
 }

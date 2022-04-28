@@ -10,12 +10,12 @@ if (ScreenHeight < ScreenWidth) {
 export default StyleSheet.create({
   container: {
     maxHeight: ScreenHeight,
+    marginVertical: '1em',
     fontFamily: 'Roboto',
     flex: 1,
     height: ScreenHeight,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF'
   },
 
   text: {
@@ -56,7 +56,6 @@ export default StyleSheet.create({
 
   menuPressable: {
     fontWeight: 'bold',
-    color: 'black',
     backgroundColor: '#fc5a03',
     minWidth: ScreenWidth,
     borderRadius: '1em',
@@ -79,4 +78,9 @@ export default StyleSheet.create({
     fontSize: '1.5em',
     paddingVertical: '0.7em',
   },
+
+  menuLoading: {
+    position: 'absolute',
+    left: '48%'
+  }
 });

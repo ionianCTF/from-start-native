@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text, TextInput, View, Image} from 'react-native';
+import { Pressable, Text, TextInput, View, Image, ActivityIndicator} from 'react-native';
 import styles from '../style';
 
 
@@ -12,8 +12,39 @@ export default class Signup extends React.Component {
             email: '',
             password: '',
             confirmPassword: '',
-            invitationCode: ''
+            invitationCode: '',
+            loading: false,
         }
+        this.commitSignup = this.commitSignup.bind(this);
+    }
+    commitSignup() {
+        this.setState({loading: true});
+        // TODO add username and password validation!
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            mode: 'cors',
+            body: JSON.stringify({
+                username: this.state.username,
+                email: this.state.email,
+                password: this.state.password,
+                invitationCode: this.state.invitationCode
+            })
+        }
+        fetch('http://localhost:8010/proxy/signup', requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                if (data.access_token) {
+                    this.props.setToken({accessToken: data.access_token});
+                    this.props.setPage({page: 'home'});
+                } else if (data.error) {
+                    // TODO validate input!
+                    alert('Something went wrong, please try again');
+                    console.log(data.error)
+                    this.setState({loading: false});
+                }
+            })
+            .catch(e => console.log(e))
     }
     render() {
         return(
@@ -57,10 +88,11 @@ export default class Signup extends React.Component {
                     onChangeText={input => this.setState({invitationCode: input})}
                 >   
                 </TextInput>
-				<Pressable style={styles.menuPressable} onPress={() => {this.props.setPage('login')}} >
+				<Pressable style={styles.menuPressable} onPress={() => {this.commitSignup()}} >
 					<Text style={styles.textPressable}>Sign up</Text>
+                    {this.state.loading && <ActivityIndicator style={styles.menuLoading} color={"#fff"} />}
 				</Pressable>
-                <Text style={styles.link} onPress={() => {this.props.setPage('signin')}}>Already have an account? Log in</Text>
+                <Text style={styles.link} onPress={() => {this.props.setPage('login')}}>Already have an account? Log in</Text>
             </View>
         );
     }
