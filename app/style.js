@@ -128,5 +128,10 @@ export default StyleSheet.create({
   navPressableText: {
     fontSize: navIconDimensions/2.5,
     fontWeight: 'bold'
+  },
+  accountPic: {
+    minHeight: '6em',
+    minWidth: '6em',
+    borderRadius: '100%'
   }
 });

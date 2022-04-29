@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text, TextInput, View, Image, ActivityIndicator} from 'react-native';
+import { View, Image, Pressable, Text, TextInput, ActivityIndicator } from 'react-native';
 import styles from '../style';
 
 

@@ -36,12 +36,14 @@ export default class App extends React.Component {
 	getAuthorized() {
 		// Authorization from saved cookie
 		if (this.state.accessToken) {
+
 			const requestOptions = {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json'},
 				mode: 'cors',
 				body: JSON.stringify({access_token: this.state.accessToken})
 			}
+
 			fetch('http://localhost:8010/proxy/retrieve_username', requestOptions)
 				.then(response => response.json())
 				.then(data => {
@@ -60,7 +62,6 @@ export default class App extends React.Component {
 		}
 	}
 
-    // Load fonts https://docs.expo.dev/versions/latest/sdk/font/
     async loadFonts() {
         await Font.loadAsync({
             Roboto: require('./assets/fonts/Roboto-Regular.ttf'),
@@ -77,6 +78,7 @@ export default class App extends React.Component {
         this.loadFonts();
 		this.getAuthorized();
     }
+
     render() {
 		// Warn user if font didn't load
 		if (!this.state.fontsLoaded) console.warn('Error, unable to load fonts');
@@ -97,7 +99,7 @@ export default class App extends React.Component {
 		} else if (this.state.page === 'task') {
 			toRender = <Task setPage={this.setPage}/>
 		} else if (this.state.page === 'account') {
-			toRender = <Account setPage={this.setPage}/>
+			toRender = <Account setPage={this.setPage} username={this.state.username}/>
 		}
 		return (
 			<View style={styles.container}>

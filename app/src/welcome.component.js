@@ -1,5 +1,5 @@
 import React from "react";
-import { Pressable, Text, View, Image} from 'react-native';
+import { View, Image, Pressable, Text } from 'react-native';
 import styles from '../style';
 
 export default class Welcome extends React.Component {
