@@ -17,7 +17,8 @@ export default class App extends React.Component {
 		this.state = {
 			fontsLoaded: false,
 			page: 'welcome',
-			accessToken: localStorage.getItem('token')
+			accessToken: localStorage.getItem('token'),
+			username: ''
 		}
 		this.setPage = this.setPage.bind(this);
 		this.setToken = this.setToken.bind(this);
@@ -41,22 +42,22 @@ export default class App extends React.Component {
 				mode: 'cors',
 				body: JSON.stringify({access_token: this.state.accessToken})
 			}
-			fetch('http://localhost:8010/proxy/', requestOptions)
+			fetch('http://localhost:8010/proxy/retrieve_username', requestOptions)
 				.then(response => response.json())
 				.then(data => {
-					if (data.render) {
-						this.setState({page: 'account'});//data.render});
+					if (data.username) {
+						this.setState({username: data.username});//data.render});
+						this.setState({page: 'account'});
 					} else {
-						console.log(data);
+						console.log(data)
+						this.setState({page: 'welcome'});
 					}
 				})
-            .catch(e => {
-				alert('Internal server error, please try again'); 
-				console.log(e);
-			});
-		} else {
-			alert('no token')
-		}	
+				.catch(e => {
+					alert('Internal server error, please try again'); 
+					console.log(e);
+				});
+		}
 	}
 
     // Load fonts https://docs.expo.dev/versions/latest/sdk/font/
