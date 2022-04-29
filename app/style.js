@@ -10,17 +10,18 @@ if (ScreenHeight < ScreenWidth) {
 const navHeight = ScreenHeight/20;
 const navIconDimensions = ScreenWidth/20;
 const mainOrange = '#fc5a03';
+const logoDimensions = '12em'//ScreenHeight/4
 
 export default StyleSheet.create({
   container: {
     maxHeight: ScreenHeight,
     marginVertical: '1em',
     fontFamily: 'Roboto',
-    flexDirection: 'column',
-    flexGrow: 1,
     flex: 1,
+    flexDirection: 'column',
+    flexGrow: 'row',
     height: ScreenHeight,
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
   },
 
@@ -37,8 +38,9 @@ export default StyleSheet.create({
   },
 
   welcomeLogo: {
-    minWidth: '12em',
-    minHeight: '12em',
+    minWidth: logoDimensions,
+    minHeight: logoDimensions,
+    resizeMode: 'contain'
   },
   
   welcomeTitle: {
@@ -51,6 +53,7 @@ export default StyleSheet.create({
   signupLogo: {
     minWidth: '4em',
     minHeight: '4em',
+    resizeMode: 'contain'
   },
 
   signupTitle: {

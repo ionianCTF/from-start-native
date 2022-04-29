@@ -30,8 +30,9 @@ export default class Login extends React.Component {
             .then(response => response.json())
             .then(data => {
                 if (data.access_token) {
-                    this.props.setToken({accessToken: data.access_token});
-                    this.props.setPage({page: 'home'});
+                    localStorage.setItem('token', data.access_token)
+                    this.props.setToken(data.access_token);
+                    this.props.setPage('home');
                 } else if (data.error) {
                     alert('Invalid username/password compination');
                     this.setState({loading: false});
@@ -60,7 +61,7 @@ export default class Login extends React.Component {
                 >   
                 </TextInput>
 				<Pressable style={styles.menuPressable} onPress={() => {this.commitLogin()}} >
-					<Text style={styles.textPressable}>Log In</Text>
+                    <Text style={styles.textPressable}>Log In</Text>
                     {this.state.loading && <ActivityIndicator style={styles.menuLoading} color={"#fff"} />}
 				</Pressable>
                 <Text style={styles.link} onPress={() => {this.props.setPage('signup')}}>Don't have an account? Sign in</Text>
