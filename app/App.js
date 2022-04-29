@@ -16,11 +16,12 @@ export default class App extends React.Component {
 		super(props);
 		this.state = {
 			fontsLoaded: false,
-			page: 'home',
-			accessToken: ''
+			page: 'welcome',
+			accessToken: localStorage.getItem('token')
 		}
 		this.setPage = this.setPage.bind(this);
 		this.setToken = this.setToken.bind(this);
+		this.getAuthorized = this.getAuthorized.bind(this);
 	}
 
 	setPage(page) {
@@ -31,25 +32,31 @@ export default class App extends React.Component {
 		this.setState({accessToken: token});
 	} 
 
-	getPage() {
-		const requestOptions = {
-            method: 'GET',
-        }
-		fetch('http://localhost:8010/proxy/', requestOptions)
-			.then(response => response.json())
-            .then(data => {
-                if (data.render) {
-					console.log(data);
-                    this.setState({page: data.render});
-                } else {
-                    alert('Invalid username/password compination');
-                    console.log(data);
-                }
-            })
+	getAuthorized() {
+		// Authorization from saved cookie
+		if (this.state.accessToken) {
+			const requestOptions = {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json'},
+				mode: 'cors',
+				body: JSON.stringify({access_token: this.state.accessToken})
+			}
+			fetch('http://localhost:8010/proxy/', requestOptions)
+				.then(response => response.json())
+				.then(data => {
+					if (data.render) {
+						this.setState({page: 'account'});//data.render});
+					} else {
+						console.log(data);
+					}
+				})
             .catch(e => {
 				alert('Internal server error, please try again'); 
 				console.log(e);
 			});
+		} else {
+			alert('no token')
+		}	
 	}
 
     // Load fonts https://docs.expo.dev/versions/latest/sdk/font/
@@ -66,8 +73,8 @@ export default class App extends React.Component {
     }
 
     componentDidMount() {
-        //this.loadFonts();
-		//this.getPage();
+        this.loadFonts();
+		this.getAuthorized();
     }
     render() {
 		// Warn user if font didn't load
