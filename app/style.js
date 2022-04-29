@@ -1,20 +1,26 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import { useFonts } from 'expo-font';
 
 let ScreenHeight = Dimensions.get('window').height;
 let ScreenWidth = Dimensions.get('window').width;
+let PressableWidth = ScreenWidth
 if (ScreenHeight < ScreenWidth) {
-    ScreenWidth = ScreenWidth/3
+    PressableWidth = ScreenWidth/2
+    ScreenWidth = ScreenWidth/2
 }
+const navHeight = ScreenHeight/20;
+const navIconDimensions = ScreenWidth/20;
+const mainOrange = '#fc5a03';
 
 export default StyleSheet.create({
   container: {
     maxHeight: ScreenHeight,
     marginVertical: '1em',
     fontFamily: 'Roboto',
+    flexDirection: 'column',
+    flexGrow: 1,
     flex: 1,
     height: ScreenHeight,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
 
@@ -56,8 +62,8 @@ export default StyleSheet.create({
 
   menuPressable: {
     fontWeight: 'bold',
-    backgroundColor: '#fc5a03',
-    minWidth: ScreenWidth,
+    backgroundColor: mainOrange,
+    minWidth: PressableWidth,
     borderRadius: '1em',
     marginVertical: '.5em'
   },
@@ -82,5 +88,42 @@ export default StyleSheet.create({
   menuLoading: {
     position: 'absolute',
     left: '48%'
+  },
+  navigator: {
+    flex: 1,
+    flexDirection: 'row',
+    zIndex: 1,
+    position: 'fixed',
+    bottom: 0,
+    justifyContent: 'center',
+    width: ScreenWidth,
+    minHeight: navHeight,
+    backgroundColor: mainOrange
+  },
+  navPressable: {
+    zIndex: 2,
+    alignItems: 'center',
+    maxWidth: navIconDimensions,
+    height: navIconDimensions,
+    marginHorizontal: navIconDimensions*1.4,
+    marginVertical: navIconDimensions/2,
+  },
+  navPressableFaded: {
+    zIndex: 2,
+    alignItems: 'center',
+    maxWidth: navIconDimensions,
+    height: navIconDimensions,
+    marginHorizontal: navIconDimensions*1.4,
+    marginVertical: navIconDimensions/2,
+    opacity: 0.5
+  },
+  //https://www.flaticon.com
+  navPressableIcon: {
+    minWidth: navIconDimensions,
+    minHeight: navIconDimensions
+  },
+  navPressableText: {
+    fontSize: navIconDimensions/2.5,
+    fontWeight: 'bold'
   }
 });

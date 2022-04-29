@@ -41,7 +41,7 @@ export default class Login extends React.Component {
     }
     render() {
         return(
-            <View style={styles.container}>
+            <View>
                 <Image style={styles.welcomeLogo} source={require('../assets/logo.png')}/>
 				<Text style={styles.welcomeTitle}>SpotFox</Text>
                 <TextInput 

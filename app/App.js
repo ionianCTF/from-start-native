@@ -1,15 +1,22 @@
 import React from 'react';
 import * as Font from 'expo-font';
+import { View } from 'react-native';
 import Welcome from './src/welcome.component';
 import Login from './src/login.component';
 import Signup  from './src/signup.component';
+import Home from './src/home.component';
+import Earn from './src/earn.component';
+import Vip from './src/vip.component';
+import Task from './src/task.component';
+import Account from './src/account.component';
+import styles from './style';
 
 export default class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			fontsLoaded: false,
-			page: 'welcome',
+			page: 'home',
 			accessToken: ''
 		}
 		this.setPage = this.setPage.bind(this);
@@ -59,9 +66,8 @@ export default class App extends React.Component {
     }
 
     componentDidMount() {
-        this.loadFonts();
-		this.getPage();
-
+        //this.loadFonts();
+		//this.getPage();
     }
     render() {
 		// Warn user if font didn't load
@@ -74,11 +80,22 @@ export default class App extends React.Component {
 			toRender = <Login setPage={this.setPage} setToken={this.setToken}/>
 		} else if (this.state.page === 'signup') {
 			toRender = <Signup setPage={this.setPage} setToken={this.setToken}/>
-		} else if (this.state.page === 'signup') {
-			toRender = <Welcome setPage={this.setPage} setToken={this.setToken}/>
+		} else if (this.state.page === 'home') {
+			toRender = <Home setPage={this.setPage}/>
+		} else if (this.state.page === 'earn') {
+			toRender = <Earn setPage={this.setPage}/>
+		} else if (this.state.page === 'vip') {
+			toRender = <Vip setPage={this.setPage}/>
+		} else if (this.state.page === 'task') {
+			toRender = <Task setPage={this.setPage}/>
+		} else if (this.state.page === 'account') {
+			toRender = <Account setPage={this.setPage}/>
 		}
 		return (
-			toRender	
+			<View style={styles.container}>
+				{toRender}
+			</View>
+
 		);
     }
 }

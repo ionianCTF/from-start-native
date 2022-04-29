@@ -5,7 +5,7 @@ import styles from '../style';
 export default class Welcome extends React.Component {
     render() {
         return(
-            <View style={styles.container}>
+            <View >
                 <Image style={styles.welcomeLogo} source={require('../assets/logo.png')}/>
 				<Text style={styles.welcomeTitle}>SpotFox</Text>
 				<Pressable style={styles.menuPressable} onPress={() => { this.props.setPage('login') }} >

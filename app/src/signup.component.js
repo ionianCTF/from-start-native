@@ -48,7 +48,7 @@ export default class Signup extends React.Component {
     }
     render() {
         return(
-            <View style={styles.container}>
+            <View>
                 <Image style={styles.signupLogo} source={require('../assets/logo.png')}/>
 				<Text style={styles.signupTitle}>SpotFox</Text>
                 <TextInput 
