@@ -15,7 +15,7 @@ export default class User extends React.Component {
         return(
             <View style={styles.container}>
                 <Image style={styles.accountPic} source={require('../assets/125.jpg')}/>
-                <Text>{this.props.username}</Text>
+                <Text>{this.props.userData.username}</Text>
                 <Navigator setPage={this.props.setPage} page='account'/>
             </View>
         );

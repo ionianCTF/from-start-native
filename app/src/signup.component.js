@@ -35,7 +35,8 @@ export default class Signup extends React.Component {
             .then(response => response.json())
             .then(data => {
                 if (data.access_token) {
-                    this.props.setToken({accessToken: data.access_token});
+                    this.props.setToken(data.access_token);
+                    this.props.setUserData({userData: data.user_data});
                     this.props.setPage({page: 'home'});
                 } else if (data.error) {
                     // TODO validate input!

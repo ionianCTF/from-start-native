@@ -18,11 +18,12 @@ export default class App extends React.Component {
 			fontsLoaded: false,
 			page: 'welcome',
 			accessToken: localStorage.getItem('token'),
-			username: ''
+			userData: {}
 		}
 		this.setPage = this.setPage.bind(this);
 		this.setToken = this.setToken.bind(this);
 		this.getAuthorized = this.getAuthorized.bind(this);
+		this.setUserData = this.setUserData.bind(this);
 	}
 
 	setPage(page) {
@@ -30,8 +31,13 @@ export default class App extends React.Component {
 	} 
 
 	setToken(token) {
+		localStorage.setItem('token', token);
 		this.setState({accessToken: token});
 	} 
+
+	setUserData(data) {
+		this.setState({userData: data})
+	}
 
 	getAuthorized() {
 		// Authorization from saved cookie
@@ -39,16 +45,19 @@ export default class App extends React.Component {
 
 			const requestOptions = {
 				method: 'POST',
-				headers: { 'Content-Type': 'application/json'},
+				headers: { 
+					'Content-Type': 'application/json',
+					'Accept': '*/*'
+				},
 				mode: 'cors',
 				body: JSON.stringify({access_token: this.state.accessToken})
 			}
 
-			fetch('http://localhost:8010/proxy/retrieve_username', requestOptions)
+			fetch('http://localhost:8010/proxy/', requestOptions)
 				.then(response => response.json())
 				.then(data => {
-					if (data.username) {
-						this.setState({username: data.username});//data.render});
+					if (data.user_data) {
+						this.setState({userData: data.user_data});
 						this.setState({page: 'account'});
 					} else {
 						console.log(data)
@@ -56,8 +65,8 @@ export default class App extends React.Component {
 					}
 				})
 				.catch(e => {
-					alert('Internal server error, please try again'); 
-					console.log(e);
+					//alert('Internal server error, please try again'); 
+					alert(e);
 				});
 		}
 	}
@@ -85,21 +94,57 @@ export default class App extends React.Component {
 
 		var toRender;
 		if (this.state.page === 'welcome') {
-			toRender = <Welcome setPage={this.setPage} setToken={this.setToken}/>
+			toRender = <Welcome 
+				setPage={this.setPage} 
+				setToken={this.setToken}
+				setUserData={this.setUserData}
+				userData={this.state.userData}
+			/>
 		} else if (this.state.page === 'login') {
-			toRender = <Login setPage={this.setPage} setToken={this.setToken}/>
+			toRender = <Login 
+				setPage={this.setPage} 
+				setToken={this.setToken}
+				setUserData={this.setUserData}
+				userData={this.state.userData}
+			/>
 		} else if (this.state.page === 'signup') {
-			toRender = <Signup setPage={this.setPage} setToken={this.setToken}/>
+			toRender = <Signup 
+				setPage={this.setPage} 
+				setToken={this.setToken}
+				setUserData={this.setUserData}
+				userData={this.state.userData}
+			/>
 		} else if (this.state.page === 'home') {
-			toRender = <Home setPage={this.setPage}/>
+			toRender = <Home 
+				setPage={this.setPage}
+				setUserData={this.setUserData}
+				userData={this.state.userData}
+			/>
 		} else if (this.state.page === 'earn') {
-			toRender = <Earn setPage={this.setPage}/>
+			toRender = <Earn 
+				setPage={this.setPage}
+				setUserData={this.setUserData}
+				userData={this.state.userData}
+			/>
 		} else if (this.state.page === 'vip') {
-			toRender = <Vip setPage={this.setPage}/>
+			toRender = <Vip 
+				setPage={this.setPage}
+				setUserData={this.setUserData}
+				userData={this.state.userData}
+			/>
 		} else if (this.state.page === 'task') {
-			toRender = <Task setPage={this.setPage}/>
+			toRender = <Task 
+				setPage={this.setPage}
+				setUserData={this.setUserData}
+				userData={this.state.userData}
+			/>
 		} else if (this.state.page === 'account') {
-			toRender = <Account setPage={this.setPage} username={this.state.username}/>
+			toRender = <Account 
+				setPage={this.setPage} 
+				username={this.state.username}
+				setUserData={this.setUserData}
+				userData={this.state.userData}
+			/>
 		}
 		return (
 			<View style={styles.container}>
