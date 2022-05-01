@@ -10,18 +10,17 @@ if (ScreenHeight < ScreenWidth) {
 const navHeight = ScreenHeight/20;
 const navIconDimensions = ScreenWidth/20;
 const mainOrange = '#fc5a03';
+const fadedOrange = '#fda677';
 const logoDimensions = '12em'//ScreenHeight/4
 
 export default StyleSheet.create({
   container: {
     maxHeight: ScreenHeight,
-    marginVertical: '1em',
     fontFamily: 'Roboto',
     flex: 1,
     flexDirection: 'column',
     flexGrow: 'row',
     height: ScreenHeight,
-    justifyContent: 'center',
     alignItems: 'center',
   },
 
@@ -33,7 +32,7 @@ export default StyleSheet.create({
 
   link: {
     fontSize: '1em',
-    marginVertical: '0.8em',
+    marginVertical: '.8em',
     color: '#1B95E0'
   },
 
@@ -59,7 +58,7 @@ export default StyleSheet.create({
   signupTitle: {
     fontWeight: 'bold',
     fontSize: '.5rem',
-    marginVertical: '0.3em',
+    marginVertical: '.3em',
     textAlign: 'center'
   },
 
@@ -83,9 +82,9 @@ export default StyleSheet.create({
     textAlign: 'center',
     minWidth: ScreenWidth,
     borderRadius: '1em',
-    marginVertical: '0.5em',
+    marginVertical: '.5em',
     fontSize: '1.5em',
-    paddingVertical: '0.7em',
+    paddingVertical: '.7em',
   },
 
   menuLoading: {
@@ -120,7 +119,6 @@ export default StyleSheet.create({
     marginVertical: navIconDimensions/2,
     opacity: 0.5
   },
-  //https://www.flaticon.com
   navPressableIcon: {
     minWidth: navIconDimensions,
     minHeight: navIconDimensions
@@ -129,9 +127,43 @@ export default StyleSheet.create({
     fontSize: navIconDimensions/2.5,
     fontWeight: 'bold'
   },
+  account: {
+    backgroundColor: fadedOrange,
+    borderBottomLeftRadius: '7em',
+    width: ScreenWidth,
+    maxHeight: ScreenWidth,
+    padding: '2em',
+    top: '0',
+    overflow: 'visible',
+    alignItems: 'center',
+  },
   accountPic: {
-    minHeight: '6em',
-    minWidth: '6em',
-    borderRadius: '100%'
+    minHeight: '5em',
+    minWidth: '5em',
+    borderRadius: '100%',
+    borderStyle: 'solid',
+    borderColor: mainOrange,
+    borderWidth: '.2em'
+  },
+  accountUsername: {
+    fontSize: '1.5em',
+    fontWeight: 'bold',
+    margin: '.4em',
+    textAlign: 'center'
+  },
+  accountDetails: {
+    fontSize: '.8em',
+    fontWeight: 'bold',
+    margin: '.2em',
+    padding: '.2em',
+    textAlign: 'center'
+  },
+  accountPressable: {
+    backgroundColor: 'black',
+    borderRadius: '1em',
+    color: mainOrange,
+    margin: '.4em',
+    paddingVertical: '.1em',
+    paddingHorizontal: '.4em'
   }
 });
