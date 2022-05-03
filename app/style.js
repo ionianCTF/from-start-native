@@ -11,6 +11,7 @@ const navHeight = ScreenHeight/20;
 const navIconDimensions = ScreenWidth/20;
 const mainOrange = '#fc5a03';
 const fadedOrange = '#fda677';
+const veryFadedOrange = '#ffe6d8';
 const logoDimensions = '12em'//ScreenHeight/4
 
 export default StyleSheet.create({
@@ -127,19 +128,26 @@ export default StyleSheet.create({
     fontSize: navIconDimensions/2.5,
     fontWeight: 'bold'
   },
+  accountScroll: {
+    minHeight: ScreenHeight,
+  },
   account: {
+    alignItems: 'center',
+    scrollEnabled: true,
+    marginBottom: navIconDimensions*2
+  },
+  accountDetailsWrapper: {
     backgroundColor: fadedOrange,
     borderBottomLeftRadius: '7em',
+    borderBottomRightRadius: '7em',
     width: ScreenWidth,
-    maxHeight: ScreenWidth,
-    padding: '2em',
-    top: '0',
-    overflow: 'visible',
+    padding: '1em',
     alignItems: 'center',
+    fontSize: '0.8em'
   },
   accountPic: {
-    minHeight: '5em',
-    minWidth: '5em',
+    height: '5em',
+    width: '5em',
     borderRadius: '100%',
     borderStyle: 'solid',
     borderColor: mainOrange,
@@ -165,5 +173,75 @@ export default StyleSheet.create({
     margin: '.4em',
     paddingVertical: '.1em',
     paddingHorizontal: '.4em'
+  },
+  accountTables: {
+    shadowColor: "#000",
+    shadowOpacity: 0.48,
+    shadowRadius: 11.95,
+    elevation: 18,
+    marginTop: '1em',
+    padding: '1em',
+    backgroundColor: veryFadedOrange,
+    borderRadius: '1em'
+  },
+  accountTable: {
+    flexDirection: 'row',
+    margin: '1em',
+    borderStyle: 'solid',
+    borderColor: 'grey',
+  },
+  accountTableItem: {
+    width: ScreenWidth/4,
+    fontSize: '1.5em',
+    textAlign: 'center',
+  },
+  accountTableItemLabel: {
+    display: 'block',
+    fontSize: '0.5em',
+    color: 'grey',
+  },
+  accountButtons: {
+    flexDirection: 'row',
+  },
+  accountButton: {
+    textAlign: 'center',
+    maxWidth: '3.5em',
+    margin: '.5em',
+  },
+  accountPressableIcon: {
+    width: '3em',
+    height: '3em',
+  },
+  accountPressableText: {
+    fontSize: '.7em',
+    textAlign: 'center'
+  },
+  accountOption: {
+    flexDirection: 'row',
+    padding: '.3em',
+    width: ScreenWidth/1.1,
+    borderStyle: 'solid',
+    borderColor: 'grey',
+    borderBottomWidth: '.1em',
+    marginBottom: '.4em',
+  },
+  accountOptionPressableText: {
+    flexDirection: 'row',
+    fontSize: '1em'
+  },
+  accountOptionPressableIcon: {
+    width: '1em',
+    height: '1em',
+    marginRight: '1em'
+  },
+  accountLogout: {
+    fontSize: '1.3em',
+    color: mainOrange,
+    marginVertical: '.5em',
+    textAlign: 'center',
+    padding: '0.4em',
+    borderStyle: 'solid',
+    borderColor: 'grey',
+    borderWidth: '.01em'
   }
 });

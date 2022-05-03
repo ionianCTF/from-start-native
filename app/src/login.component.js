@@ -31,7 +31,7 @@ export default class Login extends React.Component {
             .then(data => {
                 if (data.access_token) {
                     this.props.setToken(data.access_token);
-                    this.props.setUserData({userData: data.user_data});
+                    this.props.setUserData(JSON.parse(data.user_data));
                     this.props.setPage('home');
                 } else if (data.error) {
                     alert('Invalid username/password compination');

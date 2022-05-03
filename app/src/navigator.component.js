@@ -77,23 +77,23 @@ export default class Navigator extends React.Component {
         return(
             <View style={styles.navigator}>
                 <Pressable style={ this.state.style.home } onPress={() => this.props.setPage('home')} >
-					<Image style={styles.navPressableIcon} source={require('../assets/home.png')}/>
+					<Image style={styles.navPressableIcon} source={require('../assets/navigator/home.png')}/>
                     <Text style={styles.navPressableText}>Home</Text>
 				</Pressable>
                 <Pressable style={this.state.style.earn} onPress={() => this.props.setPage('earn')} >
-					<Image style={styles.navPressableIcon} source={require('../assets/money.png')}/>
+					<Image style={styles.navPressableIcon} source={require('../assets/navigator/money.png')}/>
                     <Text style={styles.navPressableText}>Earn</Text>
 				</Pressable>
                 <Pressable style={this.state.style.vip} onPress={() => this.props.setPage('vip')} >
-					<Image style={styles.navPressableIcon} source={require('../assets/crown.png')}/>
+					<Image style={styles.navPressableIcon} source={require('../assets/navigator/crown.png')}/>
                     <Text style={styles.navPressableText}>VIP</Text>
 				</Pressable>
                 <Pressable style={this.state.style.task} onPress={() => this.props.setPage('task')} >
-					<Image style={styles.navPressableIcon} source={require('../assets/task.png')}/>
+					<Image style={styles.navPressableIcon} source={require('../assets/navigator/task.png')}/>
                     <Text style={styles.navPressableText}>Task</Text>
 				</Pressable>
                 <Pressable style={this.state.style.account} onPress={() => this.props.setPage('account')} >
-					<Image style={styles.navPressableIcon} source={require('../assets/user.png')}/>
+					<Image style={styles.navPressableIcon} source={require('../assets/navigator/user.png')}/>
                     <Text style={styles.navPressableText}>Account</Text>
 				</Pressable>
             </View>
