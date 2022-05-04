@@ -14,7 +14,7 @@ export default class User extends React.Component {
     render() {
         return(
             <View>
-                <ScrollView contentContainerStyle={styles.accountScroll}>
+                <ScrollView contentContainerStyle={styles.accountScroll} horizontal={false} scrollEnabled={false}>
                     <View style={styles.account}>
                         <View style={styles.accountDetailsWrapper}>
                             <Image style={styles.accountPic} source={require('../assets/125.jpg')}/>
