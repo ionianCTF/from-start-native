@@ -15,6 +15,7 @@ export default class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			lang: 'en',
 			fontsLoaded: false,
 			page: 'welcome',
 			accessToken: localStorage.getItem('token'),
@@ -24,8 +25,12 @@ export default class App extends React.Component {
 		this.setToken = this.setToken.bind(this);
 		this.getAuthorized = this.getAuthorized.bind(this);
 		this.setUserData = this.setUserData.bind(this);
+		this.setLang = this.setLang.bind(this)
 	}
 
+	setLang(lang) {
+		this.setState({lang: lang})
+	}
 	setPage(page) {
 		this.setState({page: page});
 	} 
@@ -95,6 +100,8 @@ export default class App extends React.Component {
 		var toRender;
 		if (this.state.page === 'welcome') {
 			toRender = <Welcome 
+				setLang={this.setLang}
+				lang={this.state.lang}
 				setPage={this.setPage} 
 				setToken={this.setToken}
 				setUserData={this.setUserData}
@@ -102,6 +109,8 @@ export default class App extends React.Component {
 			/>
 		} else if (this.state.page === 'login') {
 			toRender = <Login 
+				setLang={this.setLang}
+				lang={this.state.lang}
 				setPage={this.setPage} 
 				setToken={this.setToken}
 				setUserData={this.setUserData}
@@ -109,6 +118,8 @@ export default class App extends React.Component {
 			/>
 		} else if (this.state.page === 'signup') {
 			toRender = <Signup 
+				setLang={this.setLang}
+				lang={this.state.lang}
 				setPage={this.setPage} 
 				setToken={this.setToken}
 				setUserData={this.setUserData}
@@ -116,30 +127,36 @@ export default class App extends React.Component {
 			/>
 		} else if (this.state.page === 'home') {
 			toRender = <Home 
+				lang={this.state.lang}
 				setPage={this.setPage}
 				setUserData={this.setUserData}
 				userData={this.state.userData}
 			/>
 		} else if (this.state.page === 'earn') {
 			toRender = <Earn 
+				lang={this.state.lang}
 				setPage={this.setPage}
 				setUserData={this.setUserData}
 				userData={this.state.userData}
 			/>
 		} else if (this.state.page === 'vip') {
 			toRender = <Vip 
+				lang={this.state.lang}
 				setPage={this.setPage}
 				setUserData={this.setUserData}
 				userData={this.state.userData}
 			/>
 		} else if (this.state.page === 'task') {
 			toRender = <Task 
+				lang={this.state.lang}
 				setPage={this.setPage}
 				setUserData={this.setUserData}
 				userData={this.state.userData}
 			/>
 		} else if (this.state.page === 'account') {
 			toRender = <Account 
+				setLang={this.setLang}
+				lang={this.state.lang}
 				setPage={this.setPage} 
 				username={this.state.username}
 				setUserData={this.setUserData}

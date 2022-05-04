@@ -12,10 +12,11 @@ const navIconDimensions = ScreenWidth/20;
 const mainOrange = '#fc5a03';
 const fadedOrange = '#fda677';
 const veryFadedOrange = '#ffe6d8';
-const logoDimensions = '12em'//ScreenHeight/4
+const logoDimensions = ScreenHeight/5
 
 export default StyleSheet.create({
   container: {
+    marginTop: '1em',
     maxHeight: ScreenHeight,
     fontFamily: 'Roboto',
     flex: 1,
@@ -23,6 +24,16 @@ export default StyleSheet.create({
     flexGrow: 'row',
     height: ScreenHeight,
     alignItems: 'center',
+  },
+
+  lang: {
+    flexDirection: 'row',
+  },
+
+  langIcon: {
+    margin: '1em',
+    width: '2em',
+    height: '2em'
   },
 
   text: {
@@ -33,7 +44,7 @@ export default StyleSheet.create({
 
   link: {
     fontSize: '1em',
-    marginVertical: '.8em',
+    marginVertical: '.4em',
     color: '#1B95E0'
   },
 
@@ -45,8 +56,8 @@ export default StyleSheet.create({
   
   welcomeTitle: {
     fontWeight: 'bold',
-    fontSize: '2.5rem',
-    marginVertical: '1em',
+    fontSize: '2em',
+    marginVertical: '.5em',
     textAlign: 'center'
   },
 
@@ -67,8 +78,10 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     backgroundColor: mainOrange,
     minWidth: PressableWidth,
+    height: '4em',
     borderRadius: '1em',
-    marginVertical: '.5em'
+    marginVertical: '.5em',
+    justifyContent: 'center'
   },
 
   textPressable: {

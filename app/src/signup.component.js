@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Image, Pressable, Text, TextInput, ActivityIndicator } from 'react-native';
+import Lang from './lang.component';
 import styles from '../style';
 
 
@@ -49,7 +50,7 @@ export default class Signup extends React.Component {
     }
     render() {
         return(
-            <View>
+            <View style={styles.container}>
                 <Image style={styles.signupLogo} source={require('../assets/logo.png')}/>
 				<Text style={styles.signupTitle}>SpotFox</Text>
                 <TextInput 
@@ -90,10 +91,14 @@ export default class Signup extends React.Component {
                 >   
                 </TextInput>
 				<Pressable style={styles.menuPressable} onPress={() => {this.commitSignup()}} >
-					<Text style={styles.textPressable}>Sign up</Text>
+					<Text style={styles.textPressable}>{this.props.lang === 'en'? 'Sign Up': 'Εγγραφή'}</Text>
                     {this.state.loading && <ActivityIndicator style={styles.menuLoading} color={"#fff"} />}
 				</Pressable>
-                <Text style={styles.link} onPress={() => {this.props.setPage('login')}}>Already have an account? Log in</Text>
+                <Text style={styles.link} onPress={() => {this.props.setPage('login')}}>{this.props.lang === 'en'? 'Already have an account? Log in': 'Έχετε ήδη λογαριασμό; Σύνδεση'}</Text>
+                <Lang
+                    lang={this.props.lang}
+                    setLang={this.props.setLang}
+                ></Lang>
             </View>
         );
     }
