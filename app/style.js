@@ -15,8 +15,10 @@ const veryFadedOrange = '#ffe6d8';
 const logoDimensions = ScreenHeight/5
 
 export default StyleSheet.create({
-  container: {
+  menuContainer: {
     marginTop: '1em',
+  },
+  container: {
     maxHeight: ScreenHeight,
     fontFamily: 'Roboto',
     flex: 1,
@@ -59,6 +61,14 @@ export default StyleSheet.create({
     fontSize: '2em',
     marginVertical: '.5em',
     textAlign: 'center'
+  },
+
+  loginCheckbox: {
+    flexDirection: 'row'
+  },
+
+  loginCheckboxLabel: {
+    marginLeft: '1em',
   },
 
   signupLogo: {

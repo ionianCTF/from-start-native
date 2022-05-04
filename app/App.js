@@ -15,22 +15,29 @@ export default class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			lang: 'en',
+			lang: 'el',
 			fontsLoaded: false,
 			page: 'welcome',
 			accessToken: localStorage.getItem('token'),
-			userData: {}
+			userData: {},
+			remember: false
 		}
 		this.setPage = this.setPage.bind(this);
 		this.setToken = this.setToken.bind(this);
 		this.getAuthorized = this.getAuthorized.bind(this);
 		this.setUserData = this.setUserData.bind(this);
 		this.setLang = this.setLang.bind(this)
+		this.setRemember = this.setRemember.bind(this)
+	}
+
+	setRemember(bool) {
+		this.setState({remember: bool})
 	}
 
 	setLang(lang) {
 		this.setState({lang: lang})
 	}
+
 	setPage(page) {
 		this.setState({page: page});
 	} 
@@ -109,6 +116,8 @@ export default class App extends React.Component {
 			/>
 		} else if (this.state.page === 'login') {
 			toRender = <Login 
+				setRemember={this.setRemember}
+				remember={this.state.remember}
 				setLang={this.setLang}
 				lang={this.state.lang}
 				setPage={this.setPage} 

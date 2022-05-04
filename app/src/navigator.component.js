@@ -78,11 +78,11 @@ export default class Navigator extends React.Component {
             <View style={styles.navigator}>
                 <Pressable style={ this.state.style.home } onPress={() => this.props.setPage('home')} >
 					<Image style={styles.navPressableIcon} source={require('../assets/navigator/home.png')}/>
-                    <Text style={styles.navPressableText}>Home</Text>
+                    <Text style={styles.navPressableText}>{this.props.lang=='en'? 'Home': 'Βάση'}</Text>
 				</Pressable>
                 <Pressable style={this.state.style.earn} onPress={() => this.props.setPage('earn')} >
 					<Image style={styles.navPressableIcon} source={require('../assets/navigator/money.png')}/>
-                    <Text style={styles.navPressableText}>Earn</Text>
+                    <Text style={styles.navPressableText}>{this.props.lang=='en'? 'Earn': 'Κέρδισε'}</Text>
 				</Pressable>
                 <Pressable style={this.state.style.vip} onPress={() => this.props.setPage('vip')} >
 					<Image style={styles.navPressableIcon} source={require('../assets/navigator/crown.png')}/>
@@ -90,11 +90,11 @@ export default class Navigator extends React.Component {
 				</Pressable>
                 <Pressable style={this.state.style.task} onPress={() => this.props.setPage('task')} >
 					<Image style={styles.navPressableIcon} source={require('../assets/navigator/task.png')}/>
-                    <Text style={styles.navPressableText}>Task</Text>
+                    <Text style={styles.navPressableText}>{this.props.lang=='en'? 'Task': 'Εργασίες'}</Text>
 				</Pressable>
                 <Pressable style={this.state.style.account} onPress={() => this.props.setPage('account')} >
 					<Image style={styles.navPressableIcon} source={require('../assets/navigator/user.png')}/>
-                    <Text style={styles.navPressableText}>Account</Text>
+                    <Text style={styles.navPressableText}>{this.props.lang=='en'? 'Account': 'Λογαριασμός'}</Text>
 				</Pressable>
             </View>
         );

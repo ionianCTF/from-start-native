@@ -50,26 +50,26 @@ export default class Signup extends React.Component {
     }
     render() {
         return(
-            <View style={styles.container}>
+            <View style={[styles.container, styles.menuContainer]}>
                 <Image style={styles.signupLogo} source={require('../assets/logo.png')}/>
 				<Text style={styles.signupTitle}>SpotFox</Text>
                 <TextInput 
                     style={styles.menuInput} 
-                    placeholder='Username'
+                    placeholder={this.props.lang=='en'? 'Username': 'Όνομα χρήστη'}
                     value={this.state.username}
                     onChangeText={input => this.setState({username: input})}
                 >   
                 </TextInput>
                 <TextInput 
                     style={styles.menuInput} 
-                    placeholder='Email'
+                    placeholder={this.props.lang=='en'? 'Email': 'Ηλεκτρονική διεύθυνση'}
                     value={this.state.email}
                     onChangeText={input => this.setState({email: input})}
                 >   
                 </TextInput>
                 <TextInput 
                     style={styles.menuInput} 
-                    placeholder='Password'
+                    placeholder={this.props.lang=='en'? 'Password': 'Κωδικός'}
                     value={this.state.password}
                     onChangeText={input => this.setState({password: input})}
                     secureTextEntry={true}
@@ -77,7 +77,7 @@ export default class Signup extends React.Component {
                 </TextInput>
                 <TextInput 
                     style={styles.menuInput} 
-                    placeholder='Confirm password'
+                    placeholder={this.props.lang=='en'? 'Confirm password': 'Επαλήθευση κωδικού'}
                     value={this.state.confirmPassword}
                     onChangeText={input => this.setState({confirmPassword: input})}
                     secureTextEntry={true}
@@ -85,7 +85,7 @@ export default class Signup extends React.Component {
                 </TextInput>
                 <TextInput 
                     style={styles.menuInput} 
-                    placeholder='Verification Code'
+                    placeholder={this.props.lang=='en'? 'Invitation Code': 'Κωδικός πρόσκλησης'}
                     value={this.state.invitationCode}
                     onChangeText={input => this.setState({invitationCode: input})}
                 >   
