@@ -15,7 +15,7 @@ export default class Home extends React.Component {
         return(
             <View style={styles.container}>
                 <Text>HOMESCREEN</Text>
-                <Navigator setPage={this.props.setPage} page='home'/>
+                <Navigator lang={this.props.lang} setPage={this.props.setPage} page='home'/>
             </View>
         );
     }

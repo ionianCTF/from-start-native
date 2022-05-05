@@ -4,6 +4,7 @@ import Navigator from './navigator.component';
 import Password from './account/password.component';
 import Support from './account/support.component';
 import Guide from './account/guide.component'
+import Lang from './lang.component';
 import styles from '../style';
 
 export default class User extends React.Component {
@@ -40,6 +41,7 @@ export default class User extends React.Component {
                                 <Pressable style={styles.accountPressable} onPress={() => navigator.clipboard.writeText(this.props.userData.invitationCode)} ><Text>Copy</Text></Pressable>
                             </Text>
                         </View>
+                        <Lang setLang={this.props.setLang}></Lang>
                         <View style={styles.accountTables}>
                             <View style={styles.accountTable}>
                                 <Text style={styles.accountTableItem}>{this.props.userData.balance.toFixed(2)}

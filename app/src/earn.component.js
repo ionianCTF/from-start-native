@@ -15,7 +15,7 @@ export default class Earn extends React.Component {
         return(
             <View style={styles.container}>
                 <Text>EARNSCREEN</Text>
-                <Navigator setPage={this.props.setPage} page='earn'/>
+                <Navigator lang={this.props.lang} setPage={this.props.setPage} page='earn'/>
             </View>
         );
     }

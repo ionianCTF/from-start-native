@@ -33,7 +33,7 @@ export default class Task extends React.Component {
                 <View style={styles.container}>
                     <TaskNavigator setPage={this.setPage} page={this.state.page} lang={this.props.lang}></TaskNavigator>
                         {toRender}
-                    <Navigator setPage={this.props.setPage} page='task'/>
+                    <Navigator lang={this.props.lang} setPage={this.props.setPage} page='task'/>
                 </View>
             </ScrollView>
         );
