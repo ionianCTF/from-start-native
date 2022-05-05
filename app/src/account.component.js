@@ -1,17 +1,22 @@
 import React from 'react';
 import { View, ScrollView, Text, Image, Pressable } from 'react-native';
 import Navigator from './navigator.component';
+import Password from './account/password.component';
 import styles from '../style';
 
 export default class User extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
-            loading: false
+            loading: false,
+            option: 'none'
         }
     }
     render() {
+        var toExpand
+        if (this.state.option === 'password') {
+            toExpand = <Password username={this.props.userData.username}></Password>
+        }
         return(
             <View>
                 <ScrollView contentContainerStyle={styles.accountScroll} horizontal={false} scrollEnabled={false}>
@@ -20,94 +25,96 @@ export default class User extends React.Component {
                             <Image style={styles.accountPic} source={require('../assets/125.jpg')}/>
                             <Text style={styles.accountUsername}>{this.props.userData.username}</Text>
                             <Text style={styles.accountDetails}>
-                                {this.props.lang=='en'? 'Email:': 'Ηλεκτρονική διεύθυνση:'} {this.props.userData.email}<br></br>
-                                {this.props.lang=='en'? 'Vip level:': 'Vip επίπεδο:'} {this.props.userData.vip}
+                                {this.props.lang==='en'? 'Email:': 'Ηλεκτρονική διεύθυνση:'} {this.props.userData.email}<br></br>
+                                {this.props.lang==='en'? 'Vip level:': 'Vip επίπεδο:'} {this.props.userData.vip}
                                     <Pressable style={styles.accountPressable} onPress={() => {this.props.setPage('vip')}}><Text>Upgrade to VIP</Text></Pressable>
                                     <br></br>
-                                {this.props.lang=='en'? 'Credit score:': 'Σκορ πίστης:'} {this.props.userData.vip*600}<br></br>
-                                {this.props.lang=='en'? 'Invitation Code:': 'Κωδικός πρόσκλησης:'} {this.props.userData.invitationCode}
+                                {this.props.lang==='en'? 'Credit score:': 'Σκορ πίστης:'} {this.props.userData.vip*600}<br></br>
+                                {this.props.lang==='en'? 'Invitation Code:': 'Κωδικός πρόσκλησης:'} {this.props.userData.invitationCode}
                                 <Pressable style={styles.accountPressable} onPress={() => navigator.clipboard.writeText(this.props.userData.invitationCode)} ><Text>Copy</Text></Pressable>
                             </Text>
                         </View>
                         <View style={styles.accountTables}>
                             <View style={styles.accountTable}>
                                 <Text style={styles.accountTableItem}>{this.props.userData.balance.toFixed(2)}
-                                    <Text style={styles.accountTableItemLabel}>{this.props.lang=='en'? 'Balance': 'Υπόλοιπο'}</Text>
+                                    <Text style={styles.accountTableItemLabel}>{this.props.lang==='en'? 'Balance': 'Υπόλοιπο'}</Text>
                                 </Text>
                                 <Text style={styles.accountTableItem}>{this.props.userData.balance.toFixed(2)}
-                                    <Text style={styles.accountTableItemLabel}>{this.props.lang=='en'? 'Task Profit': 'Κέρδη εργασιών'}</Text>
+                                    <Text style={styles.accountTableItemLabel}>{this.props.lang==='en'? 'Task Profit': 'Κέρδη εργασιών'}</Text>
                                 </Text>
                                 <Text style={styles.accountTableItem}>{this.props.userData.invitationCommision.toFixed(2)}
-                                    <Text style={styles.accountTableItemLabel}>{this.props.lang=='en'? 'Invitation Commision': 'Κέρδη προσκλήσεων'}</Text>
+                                    <Text style={styles.accountTableItemLabel}>{this.props.lang==='en'? 'Invitation Commision': 'Κέρδη προσκλήσεων'}</Text>
                                 </Text>
                             </View>
                             <View style={styles.accountTable}>
                                 <Text style={styles.accountTableItem}>{(this.props.userData.taskProfit + this.props.userData.invitationCommision).toFixed(2)}
-                                    <Text style={styles.accountTableItemLabel}>{this.props.lang=='en'? 'Total Profit': 'Ολικά κέρδη'}</Text>
+                                    <Text style={styles.accountTableItemLabel}>{this.props.lang==='en'? 'Total Profit': 'Ολικά κέρδη'}</Text>
                                 </Text>
                                 <Text style={styles.accountTableItem}>{0}
-                                    <Text style={styles.accountTableItemLabel}>{this.props.lang=='en'? 'Today Complete': 'Σημερινές εργασίες'}</Text>
+                                    <Text style={styles.accountTableItemLabel}>{this.props.lang==='en'? 'Today Complete': 'Σημερινές εργασίες'}</Text>
                                 </Text>
                                 <Text style={styles.accountTableItem}>{3}
-                                    <Text style={styles.accountTableItemLabel}>{this.props.lang=='en'? 'Today remaining': 'Σημερινές απομένουν'}</Text>
+                                    <Text style={styles.accountTableItemLabel}>{this.props.lang==='en'? 'Today remaining': 'Σημερινές απομένουν'}</Text>
                                 </Text>
                             </View>
                             <View style={styles.accountTable}>
                                 <Text style={styles.accountTableItem}>{this.props.userData.balance.toFixed(2)}
-                                    <Text style={styles.accountTableItemLabel}>{this.props.lang=='en'? 'Today\'s profit': 'Σημερινά κέρδη'}</Text>
+                                    <Text style={styles.accountTableItemLabel}>{this.props.lang==='en'? 'Today\'s profit': 'Σημερινά κέρδη'}</Text>
                                 </Text>
                                 <Text style={styles.accountTableItem}>{this.props.userData.balance.toFixed(2)}
-                                    <Text style={styles.accountTableItemLabel}>{this.props.lang=='en'? 'Weekly profit': 'Εβδομαδιαία κέρδη'}</Text>
+                                    <Text style={styles.accountTableItemLabel}>{this.props.lang==='en'? 'Weekly profit': 'Εβδομαδιαία κέρδη'}</Text>
                                 </Text>
                                 <Text style={styles.accountTableItem}>{this.props.userData.balance.toFixed(2)}
-                                    <Text style={styles.accountTableItemLabel}>{this.props.lang=='en'? 'Monthly profit': 'Μηνιαία κέρδη'}</Text>
+                                    <Text style={styles.accountTableItemLabel}>{this.props.lang==='en'? 'Monthly profit': 'Μηνιαία κέρδη'}</Text>
                                 </Text>
                             </View>
                         </View>
                         <View style={styles.accountButtons}>
                             <Pressable style={styles.accountButton} onPress={() => this.props.setPage('home')} >
                                 <Image style={styles.accountPressableIcon} source={require('../assets/account/funds.png')}/>
-                                <Text style={styles.accountPressableText}>{this.props.lang=='en'? 'Funds': 'Κεφάλαια'}</Text>
+                                <Text style={styles.accountPressableText}>{this.props.lang==='en'? 'Funds': 'Κεφάλαια'}</Text>
                             </Pressable>
                             <Pressable style={styles.accountButton} onPress={() => this.props.setPage('earn')} >
                                 <Image style={styles.accountPressableIcon} source={require('../assets/account/recharge.png')}/>
-                                <Text style={styles.accountPressableText}>{this.props.lang=='en'? 'Recharge': 'Επαναφόρτιση'}</Text>
+                                <Text style={styles.accountPressableText}>{this.props.lang==='en'? 'Recharge': 'Επαναφόρτιση'}</Text>
                             </Pressable>
                             <Pressable style={styles.accountButton} onPress={() => this.props.setPage('vip')} >
                                 <Image style={styles.accountPressableIcon} source={require('../assets/account/income.png')}/>
-                                <Text style={styles.accountPressableText}>{this.props.lang=='en'? 'My bill': 'Απόδειξη'}</Text>
+                                <Text style={styles.accountPressableText}>{this.props.lang==='en'? 'My bill': 'Απόδειξη'}</Text>
                             </Pressable>
                             <Pressable style={styles.accountButton} onPress={() => this.props.setPage('task')} >
                                 <Image style={styles.accountPressableIcon} source={require('../assets/account/withdraw.png')}/>
-                                <Text style={styles.accountPressableText}>{this.props.lang=='en'? 'Withdrawal record': 'Ιστορικό αναλήψεων'}</Text>
+                                <Text style={styles.accountPressableText}>{this.props.lang==='en'? 'Withdrawal record': 'Ιστορικό αναλήψεων'}</Text>
                             </Pressable>
                             <Pressable style={styles.accountButton} onPress={() => this.props.setPage('account')} >
                                 <Image style={styles.accountPressableIcon} source={require('../assets/account/funding.png')}/>
-                                <Text style={styles.accountPressableText}>{this.props.lang=='en'? 'Withdrawal': 'Ανάληψη'}</Text>
+                                <Text style={styles.accountPressableText}>{this.props.lang==='en'? 'Withdrawal': 'Ανάληψη'}</Text>
                             </Pressable>
                         </View>
                         <View style={styles.accountOptions}>
                             <Pressable style={styles.accountOption} onPress={() => this.props.setPage('account')} >
                                 <Image style={styles.accountOptionPressableIcon} source={require('../assets/menu/user.png')}/>
-                                <Text style={styles.accountOptionPressableText}>{this.props.lang=='en'? 'User info': 'Προσοπικά στοιχεία'}</Text>
+                                <Text style={styles.accountOptionPressableText}>{this.props.lang==='en'? 'User info': 'Προσοπικά στοιχεία'}</Text>
                             </Pressable>
                             <Pressable style={styles.accountOption} onPress={() => this.props.setPage('account')} >
                                 <Image style={styles.accountOptionPressableIcon} source={require('../assets/menu/users.png')}/>
-                                <Text style={styles.accountOptionPressableText}>{this.props.lang=='en'? 'Team report': 'Αναφορά ομάδας'}</Text>
+                                <Text style={styles.accountOptionPressableText}>{this.props.lang==='en'? 'Team report': 'Αναφορά ομάδας'}</Text>
                             </Pressable>
                             <Pressable style={styles.accountOption} onPress={() => this.props.setPage('account')} >
                                 <Image style={styles.accountOptionPressableIcon} source={require('../assets/menu/headset.png')}/>
-                                <Text style={styles.accountOptionPressableText}>{this.props.lang=='en'? 'Customer service': 'Εξυπηρέτηση πελατών'}</Text>
+                                <Text style={styles.accountOptionPressableText}>{this.props.lang==='en'? 'Customer service': 'Εξυπηρέτηση πελατών'}</Text>
                             </Pressable>
                             <Pressable style={styles.accountOption} onPress={() => this.props.setPage('account')} >
                                 <Image style={styles.accountOptionPressableIcon} source={require('../assets/menu/book.png')}/>
-                                <Text style={styles.accountOptionPressableText}>{this.props.lang=='en'? 'User guidance': 'Οδηγίες χρήσης'}</Text>
+                                <Text style={styles.accountOptionPressableText}>{this.props.lang==='en'? 'User guidance': 'Οδηγίες χρήσης'}</Text>
                             </Pressable>
-                            <Pressable style={styles.accountOption} onPress={() => this.props.setPage('account')} >
+                            <Pressable style={styles.accountOption} onPress={() => this.state.option==='none'? this.setState({option: 'password'}): this.setState({option: 'none'})} >
                                 <Image style={styles.accountOptionPressableIcon} source={require('../assets/menu/lock.png')}/>
-                                <Text style={styles.accountOptionPressableText}>{this.props.lang=='en'? 'Change password': 'Αλλαγή κωδικού'}</Text>
+                                <Text style={styles.accountOptionPressableText}>{this.props.lang==='en'? 'Change password': 'Αλλαγή κωδικού'}</Text>
                             </Pressable>
-                            <Pressable style={styles.accountLogout} onPress={() => this.props.setPage('account')} >{this.props.lang=='en'? 'Log Out': 'Αποσύνδεση'}
+                            {this.state.option==='password'? toExpand: null}
+                            <Pressable style={styles.accountLogout} onPress={() => this.props.setPage('account')} >
+                                <Text style={styles.accountOptionPressableText}>{this.props.lang==='en'? 'Log Out': 'Αποσύνδεση'}</Text>
                             </Pressable>
                         </View>
                     </View>

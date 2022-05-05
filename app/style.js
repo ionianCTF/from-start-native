@@ -152,12 +152,12 @@ export default StyleSheet.create({
     fontWeight: 'bold'
   },
   accountScroll: {
+    alignItems: 'center',
     minHeight: ScreenHeight,
   },
   account: {
     alignItems: 'center',
-    scrollEnabled: true,
-    marginBottom: navIconDimensions*2
+    paddingBottom: navIconDimensions*2,
   },
   accountDetailsWrapper: {
     backgroundColor: fadedOrange,
@@ -240,13 +240,13 @@ export default StyleSheet.create({
     textAlign: 'center'
   },
   accountOption: {
-    flexDirection: 'row',
     padding: '.3em',
     width: ScreenWidth/1.1,
     borderStyle: 'solid',
     borderColor: 'grey',
     borderBottomWidth: '.1em',
     marginBottom: '.4em',
+    alignItems: 'center'
   },
   accountOptionPressableText: {
     flexDirection: 'row',
@@ -266,5 +266,25 @@ export default StyleSheet.create({
     borderStyle: 'solid',
     borderColor: 'grey',
     borderWidth: '.01em'
+  },
+  optionContainer: {
+    alignItems: 'center'
+  },
+  optionInput: {
+    fontSize: '1.2em',
+    textAlign: 'center',
+    borderBottomWidth: '.1em',
+    borderBottomColor: 'grey',
+    marginVertical: '.4em'
+  },
+  optionPressable: {
+    borderWidth: '.1em',
+    borderRadius: '1em',
+    padding: '.4em',
+    borderColor: 'grey' 
+  },
+  optionPressableText: {
+    fontSize: '1.2em',
+    color: mainOrange,
   }
 });
