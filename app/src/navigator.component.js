@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, Image, Pressable } from 'react-native';
 import style from '../style';
-import styles from '../style';
 
 export default class Navigator extends React.Component {
     constructor(props) {
