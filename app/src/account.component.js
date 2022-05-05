@@ -11,17 +11,17 @@ export default class User extends React.Component {
         super(props);
         this.state = {
             loading: false,
-            option: 'guide'
+            option: 'none'
         }
     }
     render() {
         var toExpand
         if (this.state.option === 'support') {
-            toExpand = <Support ></Support>
+            toExpand = <Support lang={this.props.lang}></Support>
         }else if (this.state.option === 'guide') {
-            toExpand = <Guide ></Guide>
+            toExpand = <Guide lang={this.props.lang}></Guide>
         } else if (this.state.option === 'password') {
-            toExpand = <Password username={this.props.userData.username}></Password>
+            toExpand = <Password lang={this.props.lang} username={this.props.userData.username}></Password>
         }
         return(
             <View>
@@ -113,7 +113,7 @@ export default class User extends React.Component {
                                 <Text style={styles.accountOptionPressableText}>{this.props.lang==='en'? 'Change password': 'Αλλαγή κωδικού'}</Text>
                             </Pressable>
                             {this.state.option==='password'? toExpand: null}
-                            <Pressable style={styles.accountLogout} onPress={() => this.props.setPage('account')} >
+                            <Pressable style={styles.accountLogout} onPress={() => this.props.logout()} >
                                 <Text style={styles.accountOptionPressableText}>{this.props.lang==='en'? 'Log Out': 'Αποσύνδεση'}</Text>
                             </Pressable>
                         </View>

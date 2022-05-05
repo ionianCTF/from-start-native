@@ -31,10 +31,9 @@ export default class Support extends React.Component {
             .catch(e => alert(e))
     }
     render() {
-        const paragraphs = []
         return(
             <View style={styles.optionContainer}>
-                <Text style={styles.guideTitle}>User Guide</Text>
+                <Text style={styles.guideTitle}>{this.props.lang=='en'?'User Guide': 'Οδηγίες χρήσης'}</Text>
                 {this.state.text}
             </View>
         );

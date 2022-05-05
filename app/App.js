@@ -28,6 +28,7 @@ export default class App extends React.Component {
 		this.setUserData = this.setUserData.bind(this);
 		this.setLang = this.setLang.bind(this)
 		this.setRemember = this.setRemember.bind(this)
+		this.logout = this.logout.bind(this)
 	}
 
 	setRemember(bool) {
@@ -49,6 +50,12 @@ export default class App extends React.Component {
 
 	setUserData(data) {
 		this.setState({userData: data})
+	}
+
+	logout() {
+		localStorage.setItem('token', null);
+		localStorage.setItem('userdata', null);
+		location.reload();
 	}
 
 	getAuthorized() {
@@ -164,6 +171,7 @@ export default class App extends React.Component {
 			/>
 		} else if (this.state.page === 'account') {
 			toRender = <Account 
+				logout={this.logout}
 				setLang={this.setLang}
 				lang={this.state.lang}
 				setPage={this.setPage} 
