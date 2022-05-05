@@ -268,7 +268,10 @@ export default StyleSheet.create({
     borderWidth: '.01em'
   },
   optionContainer: {
-    alignItems: 'center'
+    alignSelf: 'center',
+    alignItems: 'center',
+    maxWidth: ScreenWidth/1.2,
+    textAlign: 'center'
   },
   optionInput: {
     fontSize: '1.2em',
@@ -289,7 +292,14 @@ export default StyleSheet.create({
   },
   support: {
     borderBottomWidth: '.1em',
-    borderBottomColor: mainOrange,
+    borderBottomColor: 'grey',
     margin: '.5em'
+  },
+  guideTitle: {
+    fontSize: '1.3em',
+    fontWeight: 'bold'
+  },
+  guideParagraph: {
+    marginVertical: '.3em'
   }
 });

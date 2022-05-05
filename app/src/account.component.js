@@ -3,6 +3,7 @@ import { View, ScrollView, Text, Image, Pressable } from 'react-native';
 import Navigator from './navigator.component';
 import Password from './account/password.component';
 import Support from './account/support.component';
+import Guide from './account/guide.component'
 import styles from '../style';
 
 export default class User extends React.Component {
@@ -10,15 +11,15 @@ export default class User extends React.Component {
         super(props);
         this.state = {
             loading: false,
-            option: 'support'
+            option: 'guide'
         }
     }
     render() {
         var toExpand
         if (this.state.option === 'support') {
-            toExpand = <Support username={this.props.userData.username}></Support>
+            toExpand = <Support ></Support>
         }else if (this.state.option === 'guide') {
-            toExpand = <Password username={this.props.userData.username}></Password>
+            toExpand = <Guide ></Guide>
         } else if (this.state.option === 'password') {
             toExpand = <Password username={this.props.userData.username}></Password>
         }
