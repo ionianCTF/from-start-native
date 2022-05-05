@@ -53,6 +53,17 @@ export default class App extends React.Component {
 	}
 
 	logout() {
+		const requestOptions = {
+			method: 'POST',
+			headers: { 
+				'Content-Type': 'application/json',
+				'Accept': '*/*'
+			},
+			mode: 'cors',
+			body: JSON.stringify({access_token: this.state.accessToken})
+		}
+		fetch('http://localhost:8010/proxy/logout', requestOptions)
+
 		localStorage.setItem('token', null);
 		localStorage.setItem('userdata', null);
 		location.reload();
