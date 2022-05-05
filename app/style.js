@@ -329,5 +329,41 @@ export default StyleSheet.create({
   },
   taskNavPressableText: {
     fontSize: '1.1em'
+  },
+  vip: {
+    width: ScreenWidth/1.1,
+    padding: '.5em',
+    paddingRight: '.7em',
+    margin: '.5em',
+    borderRadius: '1em',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    backgroundColor: veryFadedOrange,
+    shadowColor: "#000",
+    shadowOpacity: 0.3,
+    shadowRadius: 6,
+    justifyContent: 'space-between',
+  },
+  vipIconAndText: {
+    flexDirection: 'row'
+  },
+  vipIcon: {
+    width: '2.5em',
+    height: '2.5em'
+  },
+  vipTextContainer: {
+    flexDirection: 'column'
+  },
+  vipTextSmall: {
+    fontSize: '.6em',
+  },
+  vipRight: {
+    alignSelf: 'flex-end',
+  },
+  vipPressable: {
+    backgroundColor: mainOrange,
+    paddingVertical: '.2em',
+    paddingHorizontal: '.4em',
+    borderRadius: '.4em'
   }
 });
