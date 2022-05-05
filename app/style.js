@@ -13,19 +13,20 @@ const mainOrange = '#fc5a03';
 const fadedOrange = '#fda677';
 const veryFadedOrange = '#ffe6d8';
 const logoDimensions = ScreenHeight/5
+const white = '#F0FFF0'
 
 export default StyleSheet.create({
   menuContainer: {
     marginTop: '1em',
   },
   container: {
-    maxHeight: ScreenHeight,
     fontFamily: 'Roboto',
     flex: 1,
     flexDirection: 'column',
     flexGrow: 'row',
     height: ScreenHeight,
     alignItems: 'center',
+    backgroundColor: white
   },
 
   lang: {
@@ -156,6 +157,7 @@ export default StyleSheet.create({
     minHeight: ScreenHeight,
   },
   account: {
+    backgroundColor: white,
     alignItems: 'center',
     paddingBottom: navIconDimensions*2,
   },
@@ -301,5 +303,31 @@ export default StyleSheet.create({
   },
   guideParagraph: {
     marginVertical: '.3em'
+  },
+  taskNavigator: {
+    flexDirection: 'row',
+    zIndex: 1,
+    width: ScreenWidth,
+    backgroundColor: fadedOrange,
+    paddingTop: '.5em',
+  },
+  taskNavPressable: {
+    flex: 3,
+    marginTop: '1em',
+    width: ScreenWidth/4,
+    textAlign: 'center',
+    padding: '.2em'
+  },
+  taskNavPressablePressed: {
+    flex: 3,
+    marginTop: '1em',
+    width: ScreenWidth/4,
+    textAlign: 'center',
+    padding: '.2em',
+    borderBottomColor: 'red',
+    borderBottomWidth: '.2em'
+  },
+  taskNavPressableText: {
+    fontSize: '1.1em'
   }
 });

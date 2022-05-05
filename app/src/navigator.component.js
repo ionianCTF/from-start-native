@@ -1,19 +1,18 @@
 import React from 'react';
 import { View, Text, Image, Pressable } from 'react-native';
-import style from '../style';
+import styles from '../style';
 
 export default class Navigator extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
             loading: false,
             style: {
-                home: style.navPressable,
-                earn: style.navPressableFaded,
-                vip: style.navPressableFaded,
-                task: style.navPressableFaded,
-                account: style.navPressableFaded,
+                home: styles.navPressable,
+                earn: styles.navPressableFaded,
+                vip: styles.navPressableFaded,
+                task: styles.navPressableFaded,
+                account: styles.navPressableFaded,
             },
         }
     }
@@ -22,51 +21,51 @@ export default class Navigator extends React.Component {
         if (this.props.page === 'home') {
             this.setState({
                 style: {
-                    home: style.navPressable,
-                    earn: style.navPressableFaded,
-                    vip: style.navPressableFaded,
-                    task: style.navPressableFaded,
-                    account: style.navPressableFaded,
+                    home: styles.navPressable,
+                    earn: styles.navPressableFaded,
+                    vip: styles.navPressableFaded,
+                    task: styles.navPressableFaded,
+                    account: styles.navPressableFaded,
                 }
             });
         } else if (this.props.page === 'earn') {
             this.setState({
                 style: {
-                    home: style.navPressableFaded,
-                    earn: style.navPressable,
-                    vip: style.navPressableFaded,
-                    task: style.navPressableFaded,
-                    account: style.navPressableFaded,
+                    home: styles.navPressableFaded,
+                    earn: styles.navPressable,
+                    vip: styles.navPressableFaded,
+                    task: styles.navPressableFaded,
+                    account: styles.navPressableFaded,
                 }
             });
         } else if (this.props.page === 'vip') {
             this.setState({
                 style: {
-                    home: style.navPressableFaded,
-                    earn: style.navPressableFaded,
-                    vip: style.navPressable,
-                    task: style.navPressableFaded,
-                    account: style.navPressableFaded,
+                    home: styles.navPressableFaded,
+                    earn: styles.navPressableFaded,
+                    vip: styles.navPressable,
+                    task: styles.navPressableFaded,
+                    account: styles.navPressableFaded,
                 }
             });
         } else if (this.props.page === 'task') {
             this.setState({
                 style: {
-                    home: style.navPressableFaded,
-                    earn: style.navPressableFaded,
-                    vip: style.navPressableFaded,
-                    task: style.navPressable,
-                    account: style.navPressableFaded,
+                    home: styles.navPressableFaded,
+                    earn: styles.navPressableFaded,
+                    vip: styles.navPressableFaded,
+                    task: styles.navPressable,
+                    account: styles.navPressableFaded,
                 }
             });
         } else if (this.props.page === 'account') {
             this.setState({
                 style: {
-                    home: style.navPressableFaded,
-                    earn: style.navPressableFaded,
-                    vip: style.navPressableFaded,
-                    task: style.navPressableFaded,
-                    account: style.navPressable,
+                    home: styles.navPressableFaded,
+                    earn: styles.navPressableFaded,
+                    vip: styles.navPressableFaded,
+                    task: styles.navPressableFaded,
+                    account: styles.navPressable,
                 }
             });
         }
@@ -75,7 +74,7 @@ export default class Navigator extends React.Component {
     render() {
         return(
             <View style={styles.navigator}>
-                <Pressable style={ this.state.style.home } onPress={() => this.props.setPage('home')} >
+                <Pressable style={this.state.style.home} onPress={() => this.props.setPage('home')} >
 					<Image style={styles.navPressableIcon} source={require('../assets/navigator/home.png')}/>
                     <Text style={styles.navPressableText}>{this.props.lang=='en'? 'Home': 'Βάση'}</Text>
 				</Pressable>
