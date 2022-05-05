@@ -24,7 +24,7 @@ export default class User extends React.Component {
             toExpand = <Password lang={this.props.lang} username={this.props.userData.username}></Password>
         }
         return(
-            <View>
+            <View style={styles.container}>
                 <ScrollView contentContainerStyle={styles.accountScroll} horizontal={false} scrollEnabled={false}>
                     <View style={styles.account}>
                         <View style={styles.accountDetailsWrapper}>
