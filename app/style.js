@@ -286,5 +286,10 @@ export default StyleSheet.create({
   optionPressableText: {
     fontSize: '1.2em',
     color: mainOrange,
+  },
+  support: {
+    borderBottomWidth: '.1em',
+    borderBottomColor: mainOrange,
+    margin: '.5em'
   }
 });

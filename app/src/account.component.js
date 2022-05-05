@@ -2,6 +2,7 @@ import React from 'react';
 import { View, ScrollView, Text, Image, Pressable } from 'react-native';
 import Navigator from './navigator.component';
 import Password from './account/password.component';
+import Support from './account/support.component';
 import styles from '../style';
 
 export default class User extends React.Component {
@@ -9,12 +10,16 @@ export default class User extends React.Component {
         super(props);
         this.state = {
             loading: false,
-            option: 'none'
+            option: 'support'
         }
     }
     render() {
         var toExpand
-        if (this.state.option === 'password') {
+        if (this.state.option === 'support') {
+            toExpand = <Support username={this.props.userData.username}></Support>
+        }else if (this.state.option === 'guide') {
+            toExpand = <Password username={this.props.userData.username}></Password>
+        } else if (this.state.option === 'password') {
             toExpand = <Password username={this.props.userData.username}></Password>
         }
         return(
@@ -92,23 +97,17 @@ export default class User extends React.Component {
                             </Pressable>
                         </View>
                         <View style={styles.accountOptions}>
-                            <Pressable style={styles.accountOption} onPress={() => this.props.setPage('account')} >
-                                <Image style={styles.accountOptionPressableIcon} source={require('../assets/menu/user.png')}/>
-                                <Text style={styles.accountOptionPressableText}>{this.props.lang==='en'? 'User info': 'Προσοπικά στοιχεία'}</Text>
-                            </Pressable>
-                            <Pressable style={styles.accountOption} onPress={() => this.props.setPage('account')} >
-                                <Image style={styles.accountOptionPressableIcon} source={require('../assets/menu/users.png')}/>
-                                <Text style={styles.accountOptionPressableText}>{this.props.lang==='en'? 'Team report': 'Αναφορά ομάδας'}</Text>
-                            </Pressable>
-                            <Pressable style={styles.accountOption} onPress={() => this.props.setPage('account')} >
+                            <Pressable style={styles.accountOption} onPress={() => this.state.option!='support'? this.setState({option: 'support'}): this.setState({option: 'none'})} >
                                 <Image style={styles.accountOptionPressableIcon} source={require('../assets/menu/headset.png')}/>
                                 <Text style={styles.accountOptionPressableText}>{this.props.lang==='en'? 'Customer service': 'Εξυπηρέτηση πελατών'}</Text>
                             </Pressable>
-                            <Pressable style={styles.accountOption} onPress={() => this.props.setPage('account')} >
+                            {this.state.option==='support'? toExpand: null}
+                            <Pressable style={styles.accountOption} onPress={() => this.state.option!='guide'? this.setState({option: 'guide'}): this.setState({option: 'none'})} >
                                 <Image style={styles.accountOptionPressableIcon} source={require('../assets/menu/book.png')}/>
                                 <Text style={styles.accountOptionPressableText}>{this.props.lang==='en'? 'User guidance': 'Οδηγίες χρήσης'}</Text>
                             </Pressable>
-                            <Pressable style={styles.accountOption} onPress={() => this.state.option==='none'? this.setState({option: 'password'}): this.setState({option: 'none'})} >
+                            {this.state.option==='guide'? toExpand: null}
+                            <Pressable style={styles.accountOption} onPress={() => this.state.option!='password'? this.setState({option: 'password'}): this.setState({option: 'none'})} >
                                 <Image style={styles.accountOptionPressableIcon} source={require('../assets/menu/lock.png')}/>
                                 <Text style={styles.accountOptionPressableText}>{this.props.lang==='en'? 'Change password': 'Αλλαγή κωδικού'}</Text>
                             </Pressable>
