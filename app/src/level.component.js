@@ -5,11 +5,21 @@ import styles from '../style';
 export default class Level extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            loading: false,
-        }
     }
     render() {
+        var join;
+        if (this.props.level != this.props.userData.vip) {
+            join = (
+                <View style={styles.vipRight}>
+                    <Text style={styles.vipRight}>{this.props.buy}</Text>
+                    <Pressable style={styles.vipPressable}>
+                        <Text>{this.props.lang==='en'? 'Join': 'Συμμετοχή'}</Text>
+                    </Pressable>
+                </View>
+            )
+        } else {
+            join = null;
+        }
         return(
             <View style={styles.vip}>
                 <View style={styles.vipIconAndText}>
@@ -20,12 +30,7 @@ export default class Level extends React.Component {
                         <Text style={styles.vipTextSmall}>{this.props.lang==='en'?'Daily task':'Ημερήσιες εργασίες'}: {this.props.daily}</Text>
                     </View>
                 </View>
-                <View style={styles.vipRight}>
-                    <Text style={styles.vipRight}>{this.props.buy}</Text>
-                    <Pressable style={styles.vipPressable}>
-                        <Text>{this.props.lang==='en'? 'Join': 'Συμμετοχή'}</Text>
-                    </Pressable>
-                </View>
+                {join}
             </View>
         );
     }

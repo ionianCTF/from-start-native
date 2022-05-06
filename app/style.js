@@ -314,23 +314,21 @@ export default StyleSheet.create({
     paddingTop: '.5em',
   },
   taskNavPressable: {
-    flex: 3,
     marginTop: '1em',
     width: ScreenWidth/4,
     textAlign: 'center',
     padding: '.2em'
   },
   taskNavPressablePressed: {
-    flex: 3,
     marginTop: '1em',
     width: ScreenWidth/4,
     textAlign: 'center',
     padding: '.2em',
     borderBottomColor: 'red',
-    borderBottomWidth: '.2em'
+    borderBottomWidth: '.2em',
   },
   taskNavPressableText: {
-    fontSize: '1.1em'
+    fontSize: '1em'
   },
   vip: {
     width: ScreenWidth/1.1,
@@ -367,5 +365,82 @@ export default StyleSheet.create({
     paddingVertical: '.2em',
     paddingHorizontal: '.4em',
     borderRadius: '.4em'
+  },
+  earnTitle: {
+    backgroundColor: veryFadedOrange,
+    height: navHeight,
+    width: ScreenWidth,
+    textAlign: 'center',
+    paddingTop: '.2em',
+    fontSize: '1.2em'
+  },
+  earnTop: {
+    backgroundColor: mainOrange,
+    width: ScreenWidth,
+    alignItems: 'center'
+  },
+  earnTextBig: {
+    fontSize: '1em'
+  },
+  earnTextIcon: {
+    width: '1.7em',
+    height: '1.7em',
+    marginVertical: '.3em'
+  },
+  earnText: {
+    fontSize: '.8em',
+    marginBottom: '.3em'
+  },
+  earnNavigator: {
+    flexDirection: 'row',
+    zIndex: 1,
+    width: ScreenWidth,
+    backgroundColor: fadedOrange,
+    paddingTop: '.5em',
+  },
+  earnNavPressable: {
+    width: ScreenWidth/6,
+    textAlign: 'center',
+    padding: '.1em'
+  },
+  earnNavPressablePressed: {
+    width: ScreenWidth/6,
+    textAlign: 'center',
+    padding: '.1em',
+    borderBottomColor: 'red',
+    borderBottomWidth: '.2em',
+  },
+  earnNavPressableText: {
+    fontSize: '.7em'
+  },
+  media: {
+    flexDirection: 'row',
+    width: ScreenWidth/1.1,
+    padding: '.4em',
+    marginVertical: '.4em',
+    borderRadius: '.4em',
+  },
+  mediaIcon: {
+    height: '2em',
+    width: '2em',
+    tintColor: 'white'
+  },
+  mediaTitle: {
+    marginTop: '.5em',
+    marginLeft: '.5em',
+    color: 'white',
+    fondWeight: 'bold'
+  },
+  mediaF: {
+    backgroundColor: '#3b5998',
+  },
+  mediaI: {
+    backgroundColor: '#bc2a8d',
+  },
+  mediaY: {
+    backgroundColor: '#c4302b',
+  },
+  mediaDisabled: {
+    backgroundColor: 'grey'
   }
 });

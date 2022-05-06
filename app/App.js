@@ -166,6 +166,7 @@ export default class App extends React.Component {
 				setPage={this.setPage}
 				setUserData={this.setUserData}
 				userData={this.state.userData}
+				vip={this.state.vip}
 			/>
 		} else if (this.state.page === 'vip') {
 			toRender = <Vip 
