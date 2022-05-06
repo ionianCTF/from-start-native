@@ -78,7 +78,7 @@ export default class Navigator extends React.Component {
 					<Image style={styles.navPressableIcon} source={require('../assets/navigator/home.png')}/>
                     <Text style={styles.navPressableText}>{this.props.lang=='en'? 'Home': 'Βάση'}</Text>
 				</Pressable>
-                <Pressable style={this.state.style.earn} onPress={() => {this.props.setPage('earn'); this.props.page==='earn'? this.props.setMedia('none'): null;}} >
+                <Pressable style={this.state.style.earn} onPress={() => {this.props.setPage('earn'); this.props.setMedia? this.props.setMedia('none'): null;}} >
 					<Image style={styles.navPressableIcon} source={require('../assets/navigator/money.png')}/>
                     <Text style={styles.navPressableText}>{this.props.lang=='en'? 'Earn': 'Κέρδισε'}</Text>
 				</Pressable>
