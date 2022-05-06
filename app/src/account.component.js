@@ -7,17 +7,17 @@ import Guide from './account/guide.component'
 import Buttons from './account/buttons.component';
 import Lang from './lang.component';
 import styles from '../style';
+import Options from './account/options.component';
 
 export default class User extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             loading: false,
-            option: 'none'
         }
     }
     render() {
-        var toExpand
+        var toExpand;
         if (this.state.option === 'support') {
             toExpand = <Support lang={this.props.lang}></Support>
         }else if (this.state.option === 'guide') {
@@ -79,30 +79,10 @@ export default class User extends React.Component {
                             </View>
                         </View>
                         <Buttons lang={this.props.lang}></Buttons>
-                        <View style={styles.accountOptions}>
-                            <Pressable style={styles.accountOption} onPress={() => this.state.option!='support'? this.setState({option: 'support'}): this.setState({option: 'none'})} >
-                                <Image style={styles.accountOptionPressableIcon} source={require('../assets/menu/headset.png')}/>
-                                <Text style={styles.accountOptionPressableText}>{this.props.lang==='en'? 'Customer service': 'Εξυπηρέτηση πελατών'}</Text>
-                            </Pressable>
-                            {this.state.option==='support'? toExpand: null}
-                            <Pressable style={styles.accountOption} onPress={() => this.state.option!='guide'? this.setState({option: 'guide'}): this.setState({option: 'none'})} >
-                                <Image style={styles.accountOptionPressableIcon} source={require('../assets/menu/book.png')}/>
-                                <Text style={styles.accountOptionPressableText}>{this.props.lang==='en'? 'User guidance': 'Οδηγίες χρήσης'}</Text>
-                            </Pressable>
-                            {this.state.option==='guide'? toExpand: null}
-                            <Pressable style={styles.accountOption} onPress={() => this.state.option!='password'? this.setState({option: 'password'}): this.setState({option: 'none'})} >
-                                <Image style={styles.accountOptionPressableIcon} source={require('../assets/menu/lock.png')}/>
-                                <Text style={styles.accountOptionPressableText}>{this.props.lang==='en'? 'Change password': 'Αλλαγή κωδικού'}</Text>
-                            </Pressable>
-                            {this.state.option==='password'? toExpand: null}
-                            <Pressable style={styles.accountLogout} onPress={() => this.props.logout()} >
-                                <Text style={styles.accountOptionPressableText}>{this.props.lang==='en'? 'Log Out': 'Αποσύνδεση'}</Text>
-                            </Pressable>
-                        </View>
+                        <Options username={this.props.userData.username} lang={this.props.lang}></Options>
                     </View>
                 </ScrollView>
                 <Navigator lang={this.props.lang} setPage={this.props.setPage} page='account'/>
-
             </View>
         );
     }

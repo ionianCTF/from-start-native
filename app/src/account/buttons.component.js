@@ -31,6 +31,5 @@ export default class Buttons extends React.Component {
                 </Pressable>
             </View>
         );
-
     }
 }
