@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Image, Pressable } from 'react-native';
 import Navigator from './navigator.component';
 import Level from './level.component';
+import Top from './vip/top.component';
 import styles from '../style';
 
 export default class Vip extends React.Component {
@@ -18,6 +19,7 @@ export default class Vip extends React.Component {
         }
         return(
             <View style={styles.container}>
+                <Top userData={this.props.userData} vip={this.props.vip} lang={this.props.lang}></Top>
                 {levels}
                 <Navigator lang={this.props.lang} setPage={this.props.setPage} page='vip'/>
             </View>

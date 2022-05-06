@@ -442,5 +442,6 @@ export default StyleSheet.create({
   },
   mediaDisabled: {
     backgroundColor: 'grey'
-  }
+  },
+  
 });
