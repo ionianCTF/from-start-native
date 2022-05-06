@@ -12,7 +12,7 @@ export default class Media extends React.Component {
             style.push(styles.mediaDisabled)
         }
         return(
-            <Pressable style={style} disabled={!this.props.enabled} onPress={()=>alert('12')}>
+            <Pressable style={style} disabled={!this.props.enabled} onPress={()=>this.props.setMedia(this.props.title)}>
                 <Image style={styles.mediaIcon} source={require('../assets/earn/'+this.props.title+'.png')}/>
                 <Text style={styles.mediaTitle}>{this.props.title}</Text>
             </Pressable>

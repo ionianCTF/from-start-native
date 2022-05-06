@@ -5,6 +5,7 @@ import Top from './earn/top.component';
 import EarnNavigator from './earn/earnNavigator.component';
 import Media from './media.component';
 import Level from './level.component';
+import Tasks from './earn/tasks.component';
 import styles from '../style';
 
 export default class Earn extends React.Component {
@@ -12,24 +13,43 @@ export default class Earn extends React.Component {
         super(props);
         this.state = {
             page: 1,
+            media: 'none'
         }
         this.setPage = this.setPage.bind(this);
+        this.setMedia = this.setMedia.bind(this);
     }
     setPage(p) {
         this.setState({page: p})
     }
+    setMedia(media) {
+        this.setState({media: media})
+    }
     render() {
         var enabled= (this.props.userData.vip === this.state.page);
+        var main;
+        if (this.state.media==='none') {
+            main = (
+                <View style={styles.container}>
+                    <Top userData={this.props.userData} vip={this.props.vip} lang={this.props.lang}></Top>
+                    <EarnNavigator setPage={this.setPage} vip={this.props.vip} userData={this.props.userData} lang={this.props.lang}></EarnNavigator>
+                    <Level userData={this.props.userData} lang={this.props.lang} level={this.state.page} value={this.props.vip[this.state.page-1][0]} daily={this.props.vip[this.state.page-1][1]} buy={this.props.vip[this.state.page-1][2]}></Level>
+                    <Media enabled={enabled} setMedia={this.setMedia} style={[styles.media, styles.mediaF]} title={'Facebook'}></Media>
+                    <Media enabled={enabled} setMedia={this.setMedia} style={[styles.media, styles.mediaI]} title={'Instagram'}></Media>
+                    <Media enabled={enabled} setMedia={this.setMedia} style={[styles.media, styles.mediaY]} title={'Youtube'}></Media>
+                    <Navigator lang={this.props.lang} setPage={this.props.setPage} page='earn'/>
+                </View>
+            )
+        } else {
+            main = (
+                <View style={styles.container}>
+                    <Text style={styles.earnTitle}>{this.props.lang==='en'? 'Task List': 'Λίστα εργασιών'}</Text>
+                    <Tasks style={[styles.media]} title={this.state.media} lang={this.props.lang} plus={this.props.vip[this.state.page-1][0]}></Tasks>
+                    <Navigator setMedia={this.setMedia} lang={this.props.lang} setPage={this.props.setPage} page='earn'/>
+                </View>
+            )
+        } 
         return(
-            <View style={styles.container}>
-                <Top userData={this.props.userData} vip={this.props.vip} lang={this.props.lang}></Top>
-                <EarnNavigator setPage={this.setPage} vip={this.props.vip} userData={this.props.userData} lang={this.props.lang}></EarnNavigator>
-                <Level userData={this.props.userData} lang={this.props.lang} level={this.state.page} value={this.props.vip[this.state.page-1][0]} daily={this.props.vip[this.state.page-1][1]} buy={this.props.vip[this.state.page-1][2]}></Level>
-                <Media enabled={enabled} style={[styles.media, styles.mediaF]} title={'Facebook'}></Media>
-                <Media enabled={enabled} style={[styles.media, styles.mediaI]} title={'Instagram'}></Media>
-                <Media enabled={enabled} style={[styles.media, styles.mediaY]} title={'Youtube'}></Media>
-                <Navigator lang={this.props.lang} setPage={this.props.setPage} page='earn'/>
-            </View>
+            main
         );
     }
 }

@@ -26,7 +26,8 @@ export default StyleSheet.create({
     flexGrow: 'row',
     height: ScreenHeight,
     alignItems: 'center',
-    backgroundColor: white
+    backgroundColor: white,
+    marginBottom: navIconDimensions
   },
 
   lang: {
@@ -443,5 +444,22 @@ export default StyleSheet.create({
   mediaDisabled: {
     backgroundColor: 'grey'
   },
-  
+  mediaReceive: {
+    marginTop: '.4em',
+    left: '22%',
+    textAlign: 'center'
+  },
+  mediaReceiveText: {
+    backgroundColor: mainOrange,
+    padding: '.1em',
+    borderRadius: '.5em',
+    color: 'white'
+  },
+  homeMedia: {
+    textAlign: 'center',
+  },
+  homeMediaText: {
+    borderBottomWidth: '.1em',
+    borderColor: mainOrange
+  }
 });

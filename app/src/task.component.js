@@ -29,13 +29,13 @@ export default class Task extends React.Component {
             toRender = <Text>Others</Text>
         }
         return(
-            <ScrollView contentContainerStyle={styles.accountScroll} horizontal={false} scrollEnabled={false}>
+            <View style={styles.container}>
                 <View style={styles.container}>
                     <TaskNavigator setPage={this.setPage} page={this.state.page} lang={this.props.lang}></TaskNavigator>
-                        {toRender}
-                    <Navigator lang={this.props.lang} setPage={this.props.setPage} page='task'/>
+                    {toRender}
                 </View>
-            </ScrollView>
+                <Navigator lang={this.props.lang} setPage={this.props.setPage} page='task'/>
+            </View>
         );
     }
 }

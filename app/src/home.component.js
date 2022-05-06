@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import Navigator from './navigator.component';
+import Media from './media.component';
 import styles from '../style';
 
 export default class Home extends React.Component {
@@ -14,7 +15,12 @@ export default class Home extends React.Component {
     render() {
         return(
             <View style={styles.container}>
-                <Text>HOMESCREEN</Text>
+                <View style={styles.homeMedia}>
+                    <Text style={styles.homeMediaText}>Task list</Text>
+                    <Media enabled={true} style={[styles.media, styles.mediaF]} title={'Facebook'}></Media>
+                    <Media enabled={true} style={[styles.media, styles.mediaI]} title={'Instagram'}></Media>
+                    <Media enabled={true} style={[styles.media, styles.mediaY]} title={'Youtube'}></Media>
+                </View>
                 <Navigator lang={this.props.lang} setPage={this.props.setPage} page='home'/>
             </View>
         );
