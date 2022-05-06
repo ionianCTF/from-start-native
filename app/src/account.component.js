@@ -4,6 +4,7 @@ import Navigator from './navigator.component';
 import Password from './account/password.component';
 import Support from './account/support.component';
 import Guide from './account/guide.component'
+import Buttons from './account/buttons.component';
 import Lang from './lang.component';
 import styles from '../style';
 
@@ -77,28 +78,7 @@ export default class User extends React.Component {
                                 </Text>
                             </View>
                         </View>
-                        <View style={styles.accountButtons}>
-                            <Pressable style={styles.accountButton} onPress={() => this.props.setPage('home')} >
-                                <Image style={styles.accountPressableIcon} source={require('../assets/account/tether.png')}/>
-                                <Text style={styles.accountPressableText}>{this.props.lang==='en'? 'Funds': 'Κεφάλαια'}</Text>
-                            </Pressable>
-                            <Pressable style={styles.accountButton} onPress={() => this.props.setPage('earn')} >
-                                <Image style={styles.accountPressableIcon} source={require('../assets/account/credit-card.png')}/>
-                                <Text style={styles.accountPressableText}>{this.props.lang==='en'? 'Recharge': 'Επαναφόρτιση'}</Text>
-                            </Pressable>
-                            <Pressable style={styles.accountButton} onPress={() => this.props.setPage('vip')} >
-                                <Image style={styles.accountPressableIcon} source={require('../assets/account/receipt.png')}/>
-                                <Text style={styles.accountPressableText}>{this.props.lang==='en'? 'My bill': 'Απόδειξη'}</Text>
-                            </Pressable>
-                            <Pressable style={styles.accountButton} onPress={() => this.props.setPage('task')} >
-                                <Image style={styles.accountPressableIcon} source={require('../assets/account/clock.png')}/>
-                                <Text style={styles.accountPressableText}>{this.props.lang==='en'? 'Withdrawal record': 'Ιστορικό αναλήψεων'}</Text>
-                            </Pressable>
-                            <Pressable style={styles.accountButton} onPress={() => this.props.setPage('account')} >
-                                <Image style={styles.accountPressableIcon} source={require('../assets/account/wallet.png')}/>
-                                <Text style={styles.accountPressableText}>{this.props.lang==='en'? 'Withdrawal': 'Ανάληψη'}</Text>
-                            </Pressable>
-                        </View>
+                        <Buttons lang={this.props.lang}></Buttons>
                         <View style={styles.accountOptions}>
                             <Pressable style={styles.accountOption} onPress={() => this.state.option!='support'? this.setState({option: 'support'}): this.setState({option: 'none'})} >
                                 <Image style={styles.accountOptionPressableIcon} source={require('../assets/menu/headset.png')}/>

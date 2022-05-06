@@ -227,11 +227,13 @@ export default StyleSheet.create({
   },
   accountButtons: {
     flexDirection: 'row',
+    width: ScreenWidth
   },
   accountButton: {
     textAlign: 'center',
-    maxWidth: '3.5em',
-    margin: '.5em',
+    width: ScreenWidth/5,
+    alignItems: 'center',
+    marginVertical: '.5em',
   },
   accountPressableIcon: {
     width: '3em',
