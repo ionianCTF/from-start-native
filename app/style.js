@@ -453,7 +453,8 @@ export default StyleSheet.create({
     backgroundColor: mainOrange,
     padding: '.1em',
     borderRadius: '.5em',
-    color: 'white'
+    color: 'white',
+    fontSize: '.8em'
   },
   homeMedia: {
     textAlign: 'center',

@@ -3,6 +3,7 @@ import { View, Text, ScrollView } from 'react-native';
 import Navigator from './navigator.component';
 import styles from '../style';
 import TaskNavigator from './task/taskNavigator.component';
+import Media from './media.component';
 
 export default class Task extends React.Component {
     constructor(props) {
@@ -18,9 +19,11 @@ export default class Task extends React.Component {
         this.setState({page: page});
     }
     render() {
-        var toRender;
+        var toRender = [];
         if (this.state.page==='process') {
-            toRender = <Text>Process</Text>
+            for (let i=0; i<this.props.userData.tasks.length; i++) {
+                toRender.push(<Media enabled={true} style={[styles.media, styles.mediaF]} title={'Facebook'}></Media>)
+            }
         } else if (this.state.page==='pending') {
             toRender = <Text>Pending</Text>
         } else if (this.state.page==='approved') {

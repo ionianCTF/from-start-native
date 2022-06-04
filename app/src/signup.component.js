@@ -39,6 +39,7 @@ export default class Signup extends React.Component {
                     this.props.setToken(data.access_token);
                     this.props.setUserData({userData: data.user_data});
                     this.props.setPage({page: 'home'});
+                    location.reload();
                 } else if (data.error) {
                     // TODO validate input!
                     alert('Something went wrong, please try again');

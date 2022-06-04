@@ -14,6 +14,8 @@ export default class User extends React.Component {
         super(props);
         this.state = {
             loading: false,
+            remainingTasks: this.props.level[this.props.userData.level-1][1]-this.props.userData.tasks.length,
+            todayTasks: this.props.userData.tasks.length
         }
     }
     render() {
@@ -34,10 +36,10 @@ export default class User extends React.Component {
                             <Text style={styles.accountUsername}>{this.props.userData.username}</Text>
                             <Text style={styles.accountDetails}>
                                 {this.props.lang==='en'? 'Email:': 'Ηλεκτρονική διεύθυνση:'} {this.props.userData.email}<br></br>
-                                {this.props.lang==='en'? 'Vip level:': 'Vip επίπεδο:'} {this.props.userData.vip}
-                                    <Pressable style={styles.accountPressable} onPress={() => {this.props.setPage('vip')}}><Text>Upgrade to VIP</Text></Pressable>
+                                {this.props.lang==='en'? 'Level:': 'Επίπεδο:'} {this.props.userData.level}
+                                    <Pressable style={styles.accountPressable} onPress={() => {this.props.setPage('level')}}><Text>Upgrade to level</Text></Pressable>
                                     <br></br>
-                                {this.props.lang==='en'? 'Credit score:': 'Σκορ πίστης:'} {this.props.userData.vip*600}<br></br>
+                                {this.props.lang==='en'? 'Credit score:': 'Σκορ πίστης:'} {this.props.userData.level*600}<br></br>
                                 {this.props.lang==='en'? 'Invitation Code:': 'Κωδικός πρόσκλησης:'} {this.props.userData.invitationCode}
                                 <Pressable style={styles.accountPressable} onPress={() => navigator.clipboard.writeText(this.props.userData.invitationCode)} ><Text>Copy</Text></Pressable>
                             </Text>
@@ -59,10 +61,10 @@ export default class User extends React.Component {
                                 <Text style={styles.accountTableItem}>{(this.props.userData.taskProfit + this.props.userData.invitationCommision).toFixed(2)}
                                     <Text style={styles.accountTableItemLabel}>{this.props.lang==='en'? 'Total Profit': 'Ολικά κέρδη'}</Text>
                                 </Text>
-                                <Text style={styles.accountTableItem}>{0}
+                                <Text style={styles.accountTableItem}>{this.state.todayTasks}
                                     <Text style={styles.accountTableItemLabel}>{this.props.lang==='en'? 'Today Complete': 'Σημερινές εργασίες'}</Text>
                                 </Text>
-                                <Text style={styles.accountTableItem}>{3}
+                                <Text style={styles.accountTableItem}>{this.state.remainingTasks}
                                     <Text style={styles.accountTableItemLabel}>{this.props.lang==='en'? 'Today remaining': 'Σημερινές απομένουν'}</Text>
                                 </Text>
                             </View>

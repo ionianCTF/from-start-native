@@ -14,12 +14,12 @@ export default class Vip extends React.Component {
     }
     render() {
         var levels = [];
-        for (let i=1; i<this.props.vip.length; i++) {
-            levels.push(<Level userData={this.props.userData} lang={this.props.lang} level={i+1} value={this.props.vip[i][0]} daily={this.props.vip[i][1]} buy={this.props.vip[i][2]}></Level>)   
+        for (let i=1; i<this.props.level.length; i++) {
+            levels.push(<Level userData={this.props.userData} lang={this.props.lang} level={i+1} value={this.props.level[i][0]} daily={this.props.level[i][1]} buy={this.props.level[i][2]}></Level>)   
         }
         return(
             <View style={styles.container}>
-                <Top userData={this.props.userData} vip={this.props.vip} lang={this.props.lang}></Top>
+                <Top userData={this.props.userData} level={this.props.level} lang={this.props.lang}></Top>
                 {levels}
                 <Navigator lang={this.props.lang} setPage={this.props.setPage} page='vip'/>
             </View>

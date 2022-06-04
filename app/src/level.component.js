@@ -8,7 +8,7 @@ export default class Level extends React.Component {
     }
     render() {
         var join;
-        if (this.props.level != this.props.userData.vip) {
+        if (this.props.level != this.props.userData.level) {
             join = (
                 <View style={styles.vipRight}>
                     <Text style={styles.vipRight}>{this.props.buy}</Text>

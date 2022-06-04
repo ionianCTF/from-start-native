@@ -21,7 +21,7 @@ export default class App extends React.Component {
 			accessToken: localStorage.getItem('token'),
 			userData: {},
 			remember: false,
-			vip: [[0.5, 3, 0], [0.8, 5, 100], [1.5, 8, 300], [1.7, 15, 600], [2, 22, 1000], [2.3, 60, 3000]]
+			level: [[0.5, 3, 0], [0.8, 5, 100], [1.5, 8, 300], [1.7, 15, 600], [2, 22, 1000], [2.3, 60, 3000]]
 		}
 		this.setPage = this.setPage.bind(this);
 		this.setToken = this.setToken.bind(this);
@@ -89,14 +89,12 @@ export default class App extends React.Component {
 				.then(data => {
 					if (data.user_data) {
 						this.setState({userData: JSON.parse(data.user_data)});
-						this.setState({page: 'earn'});
+						this.setState({page: 'home'});
 					} else {
-						console.log(data)
 						this.setState({page: 'welcome'});
 					}
 				})
 				.catch(e => {
-					//alert('Internal server error, please try again'); 
 					alert(e);
 				});
 		}
@@ -166,7 +164,7 @@ export default class App extends React.Component {
 				setPage={this.setPage}
 				setUserData={this.setUserData}
 				userData={this.state.userData}
-				vip={this.state.vip}
+				level={this.state.level}
 			/>
 		} else if (this.state.page === 'vip') {
 			toRender = <Vip 
@@ -174,7 +172,7 @@ export default class App extends React.Component {
 				setPage={this.setPage}
 				setUserData={this.setUserData}
 				userData={this.state.userData}
-				vip={this.state.vip}
+				level={this.state.level}
 			/>
 		} else if (this.state.page === 'task') {
 			toRender = <Task 
@@ -185,6 +183,7 @@ export default class App extends React.Component {
 			/>
 		} else if (this.state.page === 'account') {
 			toRender = <Account 
+				level={this.state.level}
 				logout={this.logout}
 				setLang={this.setLang}
 				lang={this.state.lang}

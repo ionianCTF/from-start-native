@@ -15,9 +15,9 @@ export default class Top extends React.Component {
                 <View style={styles.earnTop}>
                     <Text style={styles.earnTitle}>VIP</Text>
                     <Image style={styles.accountPic} source={require('../../assets/125.jpg')}/>
-                    <Text style={styles.earnTextBig}>{this.props.lang==='en'? 'Membership: Level': 'Ιδιότητα μέλους: Επίπεδο'} {this.props.userData.vip}</Text>
+                    <Text style={styles.earnTextBig}>{this.props.lang==='en'? 'Membership: Level': 'Ιδιότητα μέλους: Επίπεδο'} {this.props.userData.level}</Text>
                     <Image style={styles.earnTextIcon} source={require('../../assets/vip/1.png')}/>
-                    <Text style={styles.earnText}>{this.props.lang==='en'? 'Achievable task ': 'Εφικτές εργασίες:'} {this.props.vip[this.props.userData.vip-1][1]}</Text>
+                    <Text style={styles.earnText}>{this.props.lang==='en'? 'Achievable task ': 'Εφικτές εργασίες:'} {this.props.level[this.props.userData.level-1][1]}</Text>
                 </View>
             </View>
         );
