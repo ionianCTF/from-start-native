@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, Pressable } from 'react-native';
+import { Text, Image, Pressable } from 'react-native';
 import styles from '../../style';
 
 export default class Tasks extends React.Component {
@@ -8,6 +8,37 @@ export default class Tasks extends React.Component {
         this.state = {
             loading: false,
         }
+        this.addTask = this.addTask.bind(this);
+    }
+    addTask() {
+		// Authorization from saved cookie
+        const requestOptions = {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': '*/*'
+            },
+            body: JSON.stringify({
+                function: 'add',
+                username: this.props.userData.username,
+                social: this.props.title
+            }),
+            mode: 'cors'
+        }
+
+        fetch('http://localhost:8010/proxy/tasks', requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                if (data.success === true) {
+                    alert('Task added successfully!');
+                } else {
+                    alert('Cannot add another task!');
+                }
+            })
+            .catch(e => {
+                alert(e);
+            });
     }
     render() {
         var task = [], background;
@@ -20,11 +51,11 @@ export default class Tasks extends React.Component {
         }
         for (let i=0; i<=25; i++) {
             task.push(
-                <Pressable style={[this.props.style, background]} disabled={!this.props.enabled} onPress={()=>alert('12')}>
+                <Pressable style={[this.props.style, background]} disabled={!this.props.enabled} >
                     <Image style={styles.mediaIcon} source={require('../../assets/earn/'+this.props.title+'.png')}/>
                     <Text style={styles.mediaTitle}>{this.props.title}-Like  +{this.props.plus}</Text>
                     <Pressable style={styles.mediaReceive}>
-                        <Text style={styles.mediaReceiveText}>{this.props.lang==='en'? 'Receive': 'Απέκτησε'}</Text>
+                        <Text style={styles.mediaReceiveText} onClick={() => this.addTask()}>{this.props.lang==='en'? 'Receive': 'Απέκτησε'}</Text>
                     </Pressable>
                 </Pressable>
             )
