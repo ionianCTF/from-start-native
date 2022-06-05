@@ -30,7 +30,7 @@ export default class Tasks extends React.Component {
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                if (data.success === true) {
+                if (data.success) {
                     alert('Task added successfully!');
                 } else {
                     alert('Cannot add another task!');
@@ -51,7 +51,7 @@ export default class Tasks extends React.Component {
         }
         for (let i=0; i<=25; i++) {
             task.push(
-                <Pressable style={[this.props.style, background]} disabled={!this.props.enabled} >
+                <Pressable style={[this.props.style, background]} disabled={!this.props.enabled}>
                     <Image style={styles.mediaIcon} source={require('../../assets/earn/'+this.props.title+'.png')}/>
                     <Text style={styles.mediaTitle}>{this.props.title}-Like  +{this.props.plus}</Text>
                     <Pressable style={styles.mediaReceive}>

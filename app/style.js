@@ -462,5 +462,33 @@ export default StyleSheet.create({
   homeMediaText: {
     borderBottomWidth: '.1em',
     borderColor: mainOrange
+  },
+  expandedMedia: {
+    height: '12em',
+  },
+  upload: {
+    paddingVertical: '.4em',
+    flexDirection: 'column',
+    flexGrow: 'column',
+    justifyContent: 'flex-start',
+    alignSelf: 'flex-start',
+    padding: '.6em'
+  },
+  uploadLink: {
+  },
+  uploadLinkText: {
+    color: 'white',
+    marginVertical: '.2em',
+    fontSize: '1.2em'
+  },
+  uploadInput: {
+    fontSize: '1.2em'
+  },
+  uploadButton: {
+    backgroundColor: mainOrange,
+    borderRadius: '1em',
+    textAlign: 'center',
+    marginVertical: '.5em',
+    width: ScreenWidth/1.2
   }
 });
