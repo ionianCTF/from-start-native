@@ -29,7 +29,6 @@ export default class Tasks extends React.Component {
         fetch('http://localhost:8010/proxy/tasks', requestOptions)
             .then(response => response.json())
             .then(data => {
-                console.log(data)
                 if (data.success) {
                     alert('Task added successfully!');
                 } else {

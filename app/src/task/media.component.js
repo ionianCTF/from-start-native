@@ -7,7 +7,7 @@ export default class Media extends React.Component {
         super(props);
         this.state = {
             loading: false,
-            expanded: true
+            expanded: false
         }
         this.setExpanded = this.setExpanded.bind(this);
         this.uploadFile = this.uploadFile.bind(this);
@@ -63,16 +63,27 @@ export default class Media extends React.Component {
         if (this.props.data.requirements === 1) {
             toDo = 'like';
         }
+
+        // Might be usefull someday who knows :P
+        //switch(this.props.data.status){
+            //case 0:
+
+            //case 1:
+
+            //case 2:
+
+            //case 3:
+        //}
+
         if (this.state.expanded === true){
             mediaStyles.push(styles.expandedMedia)
             // If status isn't on pending there is no need for the upload area
-            if (this.props.data.status === 1){
+            if (this.props.data.status != 0){
                 toRender = <Pressable style={mediaStyles} onPress={() => this.setExpanded() }>
                                 <View style={styles.upload} >
                                     <Pressable style={styles.uploadLink} >
                                         <Text style={styles.uploadLinkText}>Task: {toDo}</Text>
                                         <Text style={styles.uploadLinkText} onPress={() => this.loadInBrowser(this.props.data.link )}>Link: {this.props.data.link }</Text>
-                                        <Text style={styles.uploadLinkText}>Status: {'Pending'}</Text>
                                     </Pressable>
                                 </View>
                             </Pressable>

@@ -36,9 +36,9 @@ export default class Task extends React.Component {
 				.then(response => response.json())
 				.then(data => {
 					if (data.tasks) {
-                        var tasks = []
+                        var tasks = [];
                         for (let i=0; i<data.tasks.length; i++) {
-                            var obj = JSON.parse(data.tasks[i])
+                            var obj = JSON.parse(data.tasks[i]);
                             tasks.push(JSON.parse(obj));
                         }
 						this.setState({tasks: tasks});
@@ -59,28 +59,28 @@ export default class Task extends React.Component {
             for (let i=0; i<this.state.tasks.length; i++) {
                 var task_data = this.state.tasks[i]
                 if (task_data.status === 0) {
-                    toRender.push(<Media enabled={true} data={task_data} lang={this.props.lang}></Media>)
+                    toRender.push(<Media enabled={true} data={task_data} lang={this.props.lang}></Media>);
                 }
             }
         } else if (this.state.page==='pending') {
             for (let i=0; i<this.state.tasks.length; i++) {
                 var task_data = this.state.tasks[i]
                 if (task_data.status === 1) {
-                    toRender.push(<Media enabled={true} data={task_data} lang={this.props.lang}></Media>)
+                    toRender.push(<Media enabled={true} data={task_data} lang={this.props.lang}></Media>);
                 }
             }
         } else if (this.state.page==='approved') {
             for (let i=0; i<this.state.tasks.length; i++) {
                 var task_data = this.state.tasks[i]
                 if (task_data.status === 2) {
-                    toRender.push(<Media enabled={true} data={task_data} lang={this.props.lang}></Media>)
+                    toRender.push(<Media enabled={true} data={task_data} lang={this.props.lang}></Media>);
                 }
             }
         } else if (this.state.page==='others') {
             for (let i=0; i<this.state.tasks.length; i++) {
                 var task_data = this.state.tasks[i]
                 if (task_data.status === 3) {
-                    toRender.push(<Media enabled={true} data={task_data} lang={this.props.lang}></Media>)
+                    toRender.push(<Media enabled={true} data={task_data} lang={this.props.lang}></Media>);
                 }
             }
         }
