@@ -490,5 +490,20 @@ export default StyleSheet.create({
     textAlign: 'center',
     marginVertical: '.5em',
     width: ScreenWidth/1.2
+  },
+  feed: {
+    flexGrow: 'column',
+    flexDirection: 'row',
+    marginVertical: '.2em',
+    maxWidth: ScreenWidth/1.3,
+    alignContent: 'center'
+  },
+  feedPic: {
+    borderRadius: '10em',
+    width: '3em',
+    height: '3em'
+  },
+  feedText: {
+    textAlign: 'center',
   }
 });

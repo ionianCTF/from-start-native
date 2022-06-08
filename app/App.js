@@ -89,7 +89,7 @@ export default class App extends React.Component {
 				.then(data => {
 					if (data.user_data) {
 						this.setState({userData: JSON.parse(data.user_data)});
-						this.setState({page: 'task'});
+						this.setState({page: 'home'});
 					} else {
 						this.setState({page: 'welcome'});
 					}
