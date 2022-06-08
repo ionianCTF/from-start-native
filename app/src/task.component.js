@@ -56,33 +56,53 @@ export default class Task extends React.Component {
     render() {
         var toRender = [];
         if (this.state.page==='process') {
+            var noData = true;
             for (let i=0; i<this.state.tasks.length; i++) {
-                var task_data = this.state.tasks[i]
+                var task_data = this.state.tasks[i];
                 if (task_data.status === 0) {
+                    noData = false;
                     toRender.push(<Media enabled={true} data={task_data} lang={this.props.lang}></Media>);
                 }
             }
+            if (noData) {
+                toRender = <Text style={styles.noData}>No Data Available</Text>
+            } 
         } else if (this.state.page==='pending') {
+            var noData = true;
             for (let i=0; i<this.state.tasks.length; i++) {
-                var task_data = this.state.tasks[i]
+                var task_data = this.state.tasks[i];
                 if (task_data.status === 1) {
+                    noData = false;
                     toRender.push(<Media enabled={true} data={task_data} lang={this.props.lang}></Media>);
                 }
             }
+            if (noData) {
+                toRender = <Text style={styles.noData}>No Data Available</Text>
+            } 
         } else if (this.state.page==='approved') {
+            var noData = true;
             for (let i=0; i<this.state.tasks.length; i++) {
-                var task_data = this.state.tasks[i]
+                var task_data = this.state.tasks[i];
                 if (task_data.status === 2) {
+                    noData = false;
                     toRender.push(<Media enabled={true} data={task_data} lang={this.props.lang}></Media>);
                 }
             }
+            if (noData) {
+                toRender = <Text style={styles.noData}>No Data Available</Text>
+            } 
         } else if (this.state.page==='others') {
+            var noData = true;
             for (let i=0; i<this.state.tasks.length; i++) {
-                var task_data = this.state.tasks[i]
+                var task_data = this.state.tasks[i];
                 if (task_data.status === 3) {
+                    noData = false;
                     toRender.push(<Media enabled={true} data={task_data} lang={this.props.lang}></Media>);
                 }
             }
+            if (noData) {
+                toRender = <Text style={styles.noData}>No Data Available</Text>
+            } 
         }
         return(
             <View style={styles.container}>

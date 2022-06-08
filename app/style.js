@@ -505,5 +505,9 @@ export default StyleSheet.create({
   },
   feedText: {
     textAlign: 'center',
+  },
+  noData:{
+    opacity: '.6',
+    marginTop: '5em'
   }
 });
